@@ -1,4 +1,9 @@
+<<<<<<< HEAD:singly_linked_list.rb
+#singly linked list
+#BLAHHHHH
+=======
 #doubly linked list
+>>>>>>> adaa2a2886fc4ed47dda71813a096d513183918d:Ruby/lib/doubly_linked_list.rb
 class LinkedList
   def initialize
     @first = nil
