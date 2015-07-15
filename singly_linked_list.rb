@@ -6,6 +6,13 @@ class LinkedList
     @first = Link.new(nil)
   end
 
+  def pop
+    prev, last = walkthrough
+    prev.next = nil
+
+    last.val
+  end
+
   def push(val)
     link = Link.new(val)
     _, last_link = walkthrough
@@ -14,11 +21,12 @@ class LinkedList
     self
   end
 
-  def pop
-    prev, last = walkthrough
-    prev.next = nil
+  def shift
+    first_link = @first.next
+    val = first_link.val
+    @first.next = first_link.next
 
-    last.val
+    val
   end
 
   def unshift(val)
@@ -27,11 +35,7 @@ class LinkedList
     nil
   end
 
-  def shift
-    val = @first.val
-    @first = @first.next
-    val
-  end
+  private
 
   def walkthrough
     # walksthrough and returns array of second last and last link
