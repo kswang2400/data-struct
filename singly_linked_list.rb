@@ -1,19 +1,16 @@
-#singly linked list
+# singly linked list
 class LinkedList
   attr_reader :first
 
   def initialize
-    @first = nil
+    @first = Link.new(nil)
   end
 
   def push(val)
     link = Link.new(val)
-    current = @first
-    until current.next.nil?
-      current = current.next
-    end
-    current.next = link
-    nil
+    last_link = walkthrough
+    last_link.next = link
+    self
   end
 
   def pop
@@ -36,6 +33,15 @@ class LinkedList
     val = @first.val
     @first = @first.next
     val
+  end
+
+  def walkthrough
+    # walks through the linked list and returns last link
+    current = @first
+    until current.next.nil?
+      current = current.next
+    end
+    current
   end
 end
 
