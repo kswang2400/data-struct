@@ -1,4 +1,6 @@
 class MaxStack
+  attr_reader :store
+
   def initialize
     @store = []
   end
