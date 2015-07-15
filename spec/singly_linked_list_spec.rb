@@ -11,7 +11,7 @@ RSpec.describe LinkedList do
     end 
 
     it "initializes with sentinel link" do
-      expect(@linked_list.first.class).to be Link
+      expect(@linked_list.sentinel.class).to be Link
     end
   end
 
@@ -25,6 +25,19 @@ RSpec.describe LinkedList do
       @linked_list.push(1)
       _, last_link = @linked_list.send(:walkthrough)
       expect(last_link.val).to eq 1
+    end
+  end
+
+  describe "#unshift" do 
+    it "returns self" do
+      return_val = @linked_list.unshift(6)
+      expect(return_val).to be @linked_list
+    end
+
+    it "unshifts a new link into the list" do
+      @linked_list.unshift(2)
+      first_link = @linked_list.sentinel.next
+      expect(first_link.val).to eq 2
     end
   end
 

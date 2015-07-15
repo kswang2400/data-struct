@@ -1,9 +1,9 @@
 # singly linked list
 class LinkedList
-  attr_reader :first
+  attr_reader :sentinel
 
   def initialize
-    @first = Link.new(nil)
+    @sentinel = Link.new(nil)
   end
 
   def pop
@@ -22,24 +22,25 @@ class LinkedList
   end
 
   def shift
-    first_link = @first.next
+    first_link = @sentinel.next
     val = first_link.val
-    @first.next = first_link.next
+    @sentinel.next = first_link.next
 
     val
   end
 
   def unshift(val)
     link = Link.new(val)
-    @first, link.next = link, @first
-    nil
+    @sentinel.next, link.next = link, @sentinel.next
+    
+    self
   end
 
   private
 
   def walkthrough
     # walksthrough and returns array of second last and last link
-    current = @first
+    current = @sentinel
     until current.next.nil?
       prev = current
       current = current.next
