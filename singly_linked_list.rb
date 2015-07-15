@@ -1,4 +1,5 @@
 #singly linked list
+#BLAHHHHH
 class LinkedList
   attr_reader :first
 
