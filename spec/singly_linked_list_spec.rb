@@ -23,8 +23,21 @@ RSpec.describe LinkedList do
 
     it "pushes a new link into the list" do
       @linked_list.push(1)
-      last_link = @linked_list.walkthrough
+      _, last_link = @linked_list.walkthrough
       expect(last_link.val).to eq 1
+    end
+  end
+
+  describe "#pop" do
+    it "returns the last value in the list" do
+      @linked_list.push(1)
+      @linked_list.push(2)
+      @linked_list.push(3)
+      @linked_list.push(4)
+      pop1 = @linked_list.pop
+      pop2 = @linked_list.pop
+      expect(pop1).to eq 4
+      expect(pop2).to eq 3
     end
   end
 end

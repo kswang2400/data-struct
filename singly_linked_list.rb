@@ -8,19 +8,17 @@ class LinkedList
 
   def push(val)
     link = Link.new(val)
-    last_link = walkthrough
+    _, last_link = walkthrough
     last_link.next = link
+
     self
   end
 
   def pop
-    current = @first
-    until current.next.nil?
-      prev = current
-      current = current.next
-    end
+    prev, last = walkthrough
     prev.next = nil
-    current.val
+
+    last.val
   end
 
   def unshift(val)
@@ -36,12 +34,14 @@ class LinkedList
   end
 
   def walkthrough
-    # walks through the linked list and returns last link
+    # walksthrough and returns array of second last and last link
     current = @first
     until current.next.nil?
+      prev = current
       current = current.next
     end
-    current
+
+    [prev, current]
   end
 end
 
