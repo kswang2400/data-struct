@@ -1,4 +1,4 @@
-require_relative './min_max_stack'
+require "min_max_stack"
 
 RSpec.describe MinMaxStack do
   before :each do
