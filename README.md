@@ -118,6 +118,20 @@ Uses ring buffer to wrap around
   => [100, 2, 3, 4, 5, 6, 7, 8, nil, 101]
 ```
 
+#### #insert(val, idx)
+
+Inserts the value at idx and pushes everything over
+
+```ruby
+  d_array.store
+  => [1, 2, 3, 4, nil, nil, nil, nil, nil, nil]
+  d_array.insert(10, 0)
+  => [10, 1, 2, 3, 4, nil, nil, nil, nil, nil]
+  d_array.insert(100, 2)
+  => [10, 1 100, 2, 3, 4, nil, nil, nil, nil]
+```
+
+
 ##Contact
 
 * [Karen Ling](https://github.com/karenling)
