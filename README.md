@@ -11,6 +11,40 @@
 * heaps
 * binary search tree
 
+##Usage
+
+Install the gem:
+
+  gem install data-struct
+
+Or require in Gemfile:
+  
+  gem 'data-struct'
+
+## Contents
+
+* [1. Usage](#1-usage)
+  * [1.1 Dynamic Array](#11-dynamic-array)
+
+
+## 1 Usage
+
+To use the gem, initialize a new object through DataStruct
+
+  linked_list = DataStruct.LinkedList
+  dynamic_array = DataStruct.DynamicArray(10)
+
+Methods detailed below
+
+### 1.1 Dynamic Array
+
+# #Initialize
+
+Initialize with the size of your dynamic array
+
+  d_array = DataStruct.DynamicArray.new(4)
+  => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=10, @start=0, @store=[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]>
+
 ##Contact
 
 * [Karen Ling](https://github.com/karenling)
