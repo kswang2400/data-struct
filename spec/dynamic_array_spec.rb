@@ -144,6 +144,13 @@ RSpec.describe DynamicArray do
         expect(@dynamic_array.start).to eq 0
         expect(@dynamic_array.store).to eq [10, 1, 100, 2, 3, 4, nil, nil, nil, nil]
       end
+
+      it "adjusts for edge cases" do
+        @dynamic_array.unshift(10)
+        @dynamic_array.unshift(100)
+        @dynamic_array.insert(200, 0)
+        expect(@dynamic_array.store).to eq [10, 1, 2, 3, 4, nil, nil, nil, 200, 100]
+      end
     end
   end
 end

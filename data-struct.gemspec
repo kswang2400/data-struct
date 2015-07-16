@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'data-struct'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2015-07-16'
   s.summary     = "Data structures"
   s.description = "A simple gem that provides several useful implementations of data structures"

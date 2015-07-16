@@ -131,6 +131,15 @@ Inserts the value at idx and pushes everything over
   => [10, 1 100, 2, 3, 4, nil, nil, nil, nil]
 ```
 
+Ring buffer still in effect
+
+```ruby
+  d_array.store
+  => [100, 2, 3, 4, 5, 6, 7, 8, nil, 101]
+  d_array.isnert(200, 0)
+  => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
+```
+
 
 ##Contact
 
