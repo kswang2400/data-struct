@@ -43,13 +43,59 @@ Methods detailed below
 
 ### 1.1 Dynamic Array
 
-#### #Initialize
+#### #initialize
 
 Initialize with the size of your dynamic array
 
 ```ruby
-  d_array = DataStruct.DynamicArray.new(10)
-  => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=10, @start=0, @store=[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]>
+  d_array = DataStruct.DynamicArray.new(4)
+  => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=10, @start=0, @store=[nil, nil, nil, nil]>
+```
+
+#### #pop
+
+Pops the last element in the array
+
+```ruby
+  d_array.store
+  => [1, 2, 3, 4, nil, nil, nil, nil, nil, nil]
+  d_array.pop
+  => 4
+  d_array.store
+  [1, 2, 3, nil, nil, nil, nil, nil, nil, nil]
+```
+
+#### #push(val)
+
+Pushes the value onto the end of the array
+
+```ruby
+  d_array.store
+  => [1, 2, 3, 4, nil, nil, nil, nil, nil, nil]
+  d_array.push(10)
+  => [1, 2, 3, 4, 10, nil, nil, nil, nil, nil]
+```
+
+Resizes when pushed onto full array
+
+```ruby
+  d_array.store
+  => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  d_array.push(11)
+  => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, nil, nil, nil, nil, nil, nil, nil, nil, nil]
+```
+
+#### #shift
+
+Shifts and returns the value at the front of the array; doesn't copy the array
+
+```ruby
+  d_array.store
+  => [1, 2, 3, 4, 10, nil, nil, nil, nil, nil]
+  d_array.shift
+  => 1
+  d_array.store
+  => [nil, 2, 3, 4, 10, nil, nil, nil, nil, nil]
 ```
 
 ##Contact
