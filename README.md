@@ -28,4 +28,4 @@
 
 ##License
 
-This code is free to use under the terms of the MIT license.
+This code is free to use under the terms of the MIT license. © 2015
