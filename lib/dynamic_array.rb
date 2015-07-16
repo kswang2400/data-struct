@@ -1,5 +1,6 @@
-# dynamic array with ring buffer
+
 class DynamicArray
+  # dynamic array with ring buffer
   attr_accessor :store, :size, :start
   attr_reader :num_items
 
@@ -11,9 +12,12 @@ class DynamicArray
   end
 
   def insert(idx)
+    # O(n) because you need to copy
+
   end
 
   def pop
+    # O(1)
     @num_items -= 1
     idx = @start + @num_items
     val, @store[idx] = @store[idx], nil
@@ -22,6 +26,7 @@ class DynamicArray
   end
 
   def push(val)
+    # O(1) ammortized; not called on every push
     resize! if @num_items == @size
     idx = (@start + @num_items) % @size
     @num_items += 1
@@ -31,9 +36,11 @@ class DynamicArray
   end
 
   def remove(idx)
+    # O(n) because you need to copy
   end
 
   def shift
+    # O(1)
     val, @store[@start] = @store[@start], nil
     @num_items -= 1
     @start += 1
@@ -43,6 +50,7 @@ class DynamicArray
   end
 
   def unshift(val)
+    # O(1) ammortized; not called on every unshift
     resize! if @num_items == @size
     @start -= 1
     idx = (@start) % @size
@@ -55,12 +63,13 @@ class DynamicArray
   private 
 
   def resize!
+    # O(n) because it copies the whole array into new store
     new_size = @size * 2
     new_store = Array.new(new_size)
     old_idx = @start
     new_idx = 0
 
-    until @store.all? { |e| e.nil? }
+    @size.times do
       new_store[new_idx], @store[old_idx] = @store[old_idx], nil
       new_idx = (new_idx + 1) % @num_items
       old_idx = (old_idx + 1) % @num_items
