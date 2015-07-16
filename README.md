@@ -1,4 +1,4 @@
-# Data Structures -- April 2015
+# Data Structures
 
 * static arrays
 * dynamic arrays
@@ -25,14 +25,6 @@ Or require in Gemfile:
   gem 'data-struct'
 ```
 
-## Contents
-
-* [1. Usage](#1-usage)
-  * [1.1 Dynamic Array](#11-dynamic-array)
-
-
-## 1 Usage
-
 To use the gem, initialize a new object through DataStruct
 
 ```ruby
@@ -41,6 +33,11 @@ To use the gem, initialize a new object through DataStruct
 ```
 
 Methods detailed below
+
+## Contents
+
+* [1. Usage](#1-usage)
+  * [1.1 Dynamic Array](#11-dynamic-array)
 
 ### 1.1 Dynamic Array
 
