@@ -19,12 +19,16 @@ class DynamicArray
   def insert(val, idx)
     # O(n) because you need to copy
     idx += @start
-    raise "invalid index, not in range" if idx < @start || idx > (@start + @num_items - 1)
+    validate_idx(idx)
     resize! if @num_items == @size
 
     queue = [val]
+    count = 0 # in case @store is full, then @store[idx] will never be nil, 
+              # break you move all the way around
 
     until queue.empty?
+      count += 1
+      break if count > @num_items
       queue.push(@store[idx]) unless @store[idx].nil?
       @store[idx] = queue.shift
       idx += 1
@@ -53,16 +57,28 @@ class DynamicArray
     @store
   end
 
-  def remove(idx)
-    # O(n) because you need to copy
-  end
+  # def remove(idx)
+  #   p "here"
+  #   # O(n) because you need to copy
+  #   idx += @start
+  #   validate_idx(idx)
+
+  #   queue = [@store[idx + 1]]
+
+  #   until queue.empty?
+  #     @store[idx] = queue.shift
+  #     idx += 1
+  #     queue.push(@store[idx]) unless @store[idx].nil?
+  #   end
+
+  #   @store
+  # end
 
   def shift
     # O(1)
     val, @store[@start] = @store[@start], nil
     @num_items -= 1
     @start += 1
-
 
     val
   end
@@ -96,5 +112,9 @@ class DynamicArray
     @start = 0
     @size = new_size
     @store = new_store
+  end
+
+  def validate_idx(idx)
+    raise "invalid index, not in range" if idx < @start || idx > (@start + @num_items - 1)
   end
 end
