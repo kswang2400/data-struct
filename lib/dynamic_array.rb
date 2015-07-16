@@ -26,9 +26,8 @@ class DynamicArray
     count = 0 # in case @store is full, then @store[idx] will never be nil, 
               # break you move all the way around
 
-    until queue.empty?
+    until queue.empty? || count > @num_items
       count += 1
-      break if count > @num_items
       queue.push(@store[idx]) unless @store[idx].nil?
       @store[idx] = queue.shift
       idx += 1

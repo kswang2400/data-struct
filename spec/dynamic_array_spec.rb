@@ -1,3 +1,4 @@
+
 require "dynamic_array"
 
 RSpec.describe DynamicArray do
