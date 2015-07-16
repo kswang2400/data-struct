@@ -103,13 +103,9 @@ RSpec.describe DynamicArray do
       before :each do 
         @dynamic_array.shift
         @dynamic_array.shift
-        p @dynamic_array.store
         (5..16).each do |i|
           @dynamic_array.push(i)
-          p @dynamic_array.store
         end
-        p @dynamic_array.store
-
       end
 
       describe "#resize" do

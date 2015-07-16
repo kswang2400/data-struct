@@ -26,9 +26,3 @@ class StackQueue
     end
   end
 end
-
-stack = StackQueue.new
-stack.push(4)
-stack.push(7)
-p stack.shift
-p stack
