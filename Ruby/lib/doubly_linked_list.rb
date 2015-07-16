@@ -1,34 +1,42 @@
 #doubly linked list
 class LinkedList
+  attr_reader :begin_sentinel, :last_sentinel
+
   def initialize
-    @first = nil
-    @last = nil
+    @begin_sentinel = Link.new(nil)
+    @last_sentinel = Link.new(nil)
+  end
+
+  def pop
+    last_link = @last_sentinel.last
+    val = last_link.val
+    @last_sentinel.prev = last_link.prev
+
+    val
   end
 
   def push(val)
     link = Link.new(val)
-    @last.next, link.prev = link, @last
-    @last = link
-    nil
+    @last_sentinel.prev.next, link.prev = link, @last_sentinel.prev
+    @last_sentinel.prev = link
+
+    self
   end
 
-  def pop
-    val = @last.val
-    @last.prev.next = nil
-    @last = @last.prev
-    val
-  end
 
   def unshift(val)
     link = Link.new(val)
-    @first.prev = link
-    @first, link.next = link, @first
-    nil
+    @begin_sentinel.next.prev, link.next = link, @begin_sentinel.next
+    @begin_sentinel.next = link
+
+    self
   end
 
   def shift
-    val = @first.val
-    @first = @first.next
+    first_link = @begin_sentinel.next
+    val = first_link.val
+    @begin_sentinel = first_link.next
+
     val
   end
 end
