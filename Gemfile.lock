@@ -22,6 +22,3 @@ PLATFORMS
 DEPENDENCIES
   rspec
   rspec-expectations
-
-BUNDLED WITH
-   1.10.0.pre.2
