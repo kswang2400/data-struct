@@ -48,7 +48,7 @@ Methods detailed below
 Initialize with the size of your dynamic array
 
 ```ruby
-  d_array = DataStruct.DynamicArray.new(4)
+  d_array = DataStruct.DynamicArray.new(10)
   => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=10, @start=0, @store=[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]>
 ```
 
