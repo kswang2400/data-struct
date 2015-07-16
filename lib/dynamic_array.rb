@@ -13,26 +13,23 @@ class DynamicArray
 
   def empty?
     # will refactor to check num_items because I'm not testing that variable right now
-    return @store.all? { |el| el.nil? }
+    return @store.empty?
   end
 
   def insert(val, idx)
     # O(n) because you need to copy
-    raise "invalid index, not in range" if idx < @start || idx > @start + @num_items - 1
+    idx += @start
+    raise "invalid index, not in range" if idx < @start || idx > (@start + @num_items - 1)
+    resize! if @num_items == @size
 
-    queue = DynamicArray.new(2)
-    queue.push(@store[idx])
-    @store[idx] = val
+    queue = [val]
 
     until queue.empty?
-      idx += 1
-
-      queue.push(@store[idx])
+      queue.push(@store[idx]) unless @store[idx].nil?
       @store[idx] = queue.shift
-
-      p @store
-      break if @store[idx].nil?
+      idx += 1
     end
+    @num_items += 1
 
     @store
   end

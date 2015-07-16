@@ -126,6 +126,24 @@ RSpec.describe DynamicArray do
       it "should raise an error if index not in range" do
         expect{ @dynamic_array.insert(10, 4) }.to raise_error(RuntimeError, "invalid index, not in range")
       end
+
+      it "should resize properly" do
+        6.times do
+          @dynamic_array.insert(10, 2)
+        end
+        expect(@dynamic_array.size).to eq 10
+        @dynamic_array.insert(100, 0)
+        expect(@dynamic_array.size).to eq 20
+      end
+
+      it "should have the correct instance variables" do
+        @dynamic_array.insert(10, 0)
+        @dynamic_array.insert(100, 2)
+        expect(@dynamic_array.size).to eq 10
+        expect(@dynamic_array.num_items).to eq 6
+        expect(@dynamic_array.start).to eq 0
+        expect(@dynamic_array.store).to eq [10, 1, 100, 2, 3, 4, nil, nil, nil, nil]
+      end
     end
   end
 end
