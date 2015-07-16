@@ -98,6 +98,26 @@ Shifts and returns the value at the front of the array; doesn't copy the array
   => [nil, 2, 3, 4, 10, nil, nil, nil, nil, nil]
 ```
 
+#### #unshift(val)
+
+Unshifts the value into the front of the array
+
+```ruby
+  d_array.store 
+  => [nil, 2, 3, 4, 5, 6, 7, 8, nil, nil]
+  d_array.unshift(100)
+  => [100, 2, 3, 4, 5, 6, 7, 8, nil, nil]
+```
+
+Uses ring buffer to wrap around
+
+```ruby 
+  d_array.store
+  => [100, 2, 3, 4, 5, 6, 7, 8, nil, nil]
+  d_array.unshift(101)
+  => [100, 2, 3, 4, 5, 6, 7, 8, nil, 101]
+```
+
 ##Contact
 
 * [Karen Ling](https://github.com/karenling)
