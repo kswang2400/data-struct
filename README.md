@@ -15,11 +15,15 @@
 
 Install the gem:
 
+'''ruby
   gem install data-struct
+'''
 
 Or require in Gemfile:
-  
+
+'''ruby
   gem 'data-struct'
+'''
 
 ## Contents
 
@@ -31,19 +35,23 @@ Or require in Gemfile:
 
 To use the gem, initialize a new object through DataStruct
 
+'''ruby
   linked_list = DataStruct.LinkedList
   dynamic_array = DataStruct.DynamicArray(10)
+'''
 
 Methods detailed below
 
 ### 1.1 Dynamic Array
 
-# #Initialize
+#### #Initialize
 
 Initialize with the size of your dynamic array
 
+'''ruby
   d_array = DataStruct.DynamicArray.new(4)
   => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=10, @start=0, @store=[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]>
+'''
 
 ##Contact
 
