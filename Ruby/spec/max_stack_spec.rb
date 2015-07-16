@@ -1,4 +1,4 @@
-require './max_stack'
+require "max_stack"
 
 RSpec.describe MaxStack do
   before :each do
