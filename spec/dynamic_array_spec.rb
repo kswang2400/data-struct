@@ -116,5 +116,16 @@ RSpec.describe DynamicArray do
         end 
       end
     end
+
+    describe "#insert" do
+      it "should insert the value at that index and shift everything else over" do
+        @dynamic_array.insert(10, 2)
+        expect(@dynamic_array.store).to eq [1, 2, 10, 3, 4, nil, nil, nil, nil, nil]
+      end
+
+      it "should raise an error if index not in range" do
+        expect{ @dynamic_array.insert(10, 4) }.to raise_error(RuntimeError, "invalid index, not in range")
+      end
+    end
   end
 end
