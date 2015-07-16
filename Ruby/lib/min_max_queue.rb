@@ -3,6 +3,7 @@ class MinMaxQueue
     @in, @out = [], []
   end
 
+  # O(1)
   def push(val)
     if @in.empty?
       @in << [val, val, val]
@@ -13,12 +14,14 @@ class MinMaxQueue
     end
   end
 
+  # O(1) amortized
   def shift
     flip! if @out.empty?
 
     @out.pop
   end
 
+  # O(1)
   def max
     return @in[-1][2] if @out.empty?
     return @out[-1][2] if @in.empty?
@@ -30,6 +33,7 @@ class MinMaxQueue
     end
   end
 
+  # O(1)
   def min
     return @in[-1][1] if @out.empty?
     return @out[-1][1] if @in.empty?
