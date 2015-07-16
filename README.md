@@ -36,8 +36,10 @@ Methods detailed below
 
 ## Contents
 
-* [1. Usage](#1-usage)
+* [1. Data Structures](#1-data-structures)
   * [1.1 Dynamic Array](#11-dynamic-array)
+
+## 1 Data Structures 
 
 ### 1.1 Dynamic Array
 
