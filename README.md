@@ -7,7 +7,7 @@
 * doubly linked list
 * queue
 * stack
-* lru cache
+* LRU cache
 * heaps
 * binary search tree
 
