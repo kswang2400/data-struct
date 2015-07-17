@@ -1,5 +1,5 @@
 # singly linked list
-class SingleLinkedList
+class SinglyLinkedList
   attr_reader :sentinel
 
   def initialize

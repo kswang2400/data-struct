@@ -2,16 +2,18 @@
 
 A simple gem that provides several useful data structures including the following:
 
-* static arrays
-* dynamic arrays
-* hash map
-* singly linked list
-* doubly linked list
-* queue
-* stack
-* LRU cache
-* heaps
-* binary search tree
+* [ ] StaticArray
+* [x] DynamicArray
+* [ ] HashMap
+* [x] SinglyLinkedList
+* [ ] \(doubly\) LinkedList
+* [ ] MinMaxQueue
+* [ ] \(priority\) Queue
+* [x] MaxStack
+* [x] MinMaxStack
+* [ ] LRUCache
+* [ ] Heaps
+* [ ] BinarySearchTree
 
 ##Usage
 
@@ -30,8 +32,8 @@ Or require in Gemfile:
 To use the gem, initialize a new object through DataStruct
 
 ```ruby
-  linked_list = DataStruct::SingleLinkedList.new
-  # default LinkedList class is doubly linked list; use SingleLinkedList for singly linked list
+  linked_list = DataStruct::SinglyLinkedList.new
+  # default LinkedList class is doubly linked list; use SinglyLinkedList for singly linked list
   dynamic_array = DataStruct::DynamicArray.new(10)
 ```
 
@@ -153,7 +155,7 @@ Ring buffer still in effect
 Initialize an empty Linked List object with a sentinel Link
 
 ```ruby
-  linked_list = DataStruct::LinkedList.new
+  linked_list = DataStruct::SinglyLinkedList.new
   => #<SingleLinkedList:0x007fabbb1af5b8 @sentinel=#<SingleLink:0x007fabbb1af590 @next=nil, @val=nil>>
 ```
 #### #push
@@ -202,7 +204,7 @@ Initialize your max stack.
 
 ```ruby
   max_stack = DataStruct::MaxStack.new
-  => <MaxStack:0x007f86c8a04c80 @store=[]>
+  => #<MaxStack:0x007f86c8a04c80 @store=[]>
 ```
 
 #### #push(val)
