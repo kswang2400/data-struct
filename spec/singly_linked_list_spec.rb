@@ -1,4 +1,4 @@
-require "single_linked_list"
+require "singly_linked_list"
 
 RSpec.describe SinglyLinkedList do
   before :each do 
