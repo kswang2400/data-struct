@@ -2,18 +2,18 @@
 
 A simple gem that provides several useful data structures including the following:
 
-[ ] StaticArray
-[x] DynamicArray
-[ ] HashMap
-[x] SingleLinkedList
-[ ] \(double\) LinkedList
-[ ] MinMaxQueue
-[ ] \(priority\) Queue
-[x] MaxStack
-[x] MinMaxStack
-[ ] LRUCache
-[ ] Heaps
-[ ] BinarySearchTree
+* [ ] StaticArray
+* [x] DynamicArray
+* [ ] HashMap
+* [x] SingleLinkedList
+* [ ] \(double\) LinkedList
+* [ ] MinMaxQueue
+* [ ] \(priority\) Queue
+* [x] MaxStack
+* [x] MinMaxStack
+* [ ] LRUCache
+* [ ] Heaps
+* [ ] BinarySearchTree
 
 ##Usage
 
@@ -204,7 +204,7 @@ Initialize your max stack.
 
 ```ruby
   max_stack = DataStruct::MaxStack.new
-  => <MaxStack:0x007f86c8a04c80 @store=[]>
+  => #<MaxStack:0x007f86c8a04c80 @store=[]>
 ```
 
 #### #push(val)
