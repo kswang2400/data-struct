@@ -8,6 +8,7 @@ class SingleLinkedList
 
   def pop
     prev, last = walkthrough
+    raise "cannot pop from empty list" if prev.nil?
     prev.next = nil
 
     last.val
@@ -23,6 +24,7 @@ class SingleLinkedList
 
   def shift
     first_link = @sentinel.next
+    raise "cannot shift from empty list" if prev.nil?
     val = first_link.val
     @sentinel.next = first_link.next
 
@@ -58,3 +60,4 @@ class SingleLink
     @next = nil
   end
 end
+
