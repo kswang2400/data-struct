@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name        = 'data-struct'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.date        = '2015-07-16'
-  s.summary     = "Data structures"
+  s.summary     = "Data structures, some up and running, not fully tested"
   s.description = "A simple gem that provides several useful implementations of data structures"
   s.authors     = ["Kevin Wang", "Daniel Ng", "Conan Tzou", "Karen Ling"]
   s.email       = 'kevinwang2400@gmail.com'
