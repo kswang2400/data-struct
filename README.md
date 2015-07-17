@@ -176,7 +176,7 @@ Pops the last element in the stack
   max_stack.store
   => [[5, 5]]
   max_stack.pop
-  => [5, 5]
+  => 5
   max_stack.store
   => []
 ```
