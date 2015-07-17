@@ -53,7 +53,7 @@ Initialize with the size of your dynamic array
 
 ```ruby
   d_array = DataStruct::DynamicArray.new(4)
-  => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=10, @start=0, @store=[nil, nil, nil, nil]>
+  => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=4, @start=0, @store=[nil, nil, nil, nil]>
 ```
 
 #### #pop
