@@ -8,7 +8,12 @@ class ArrayMap
 
 # O(n)
   def insert(key, value)
-    @store.push([key, value]) unless find(key)
+    pair = find(key)
+    if pair
+      pair.last = value
+    else
+      @store.push([key, value])
+    end
   end
 
 # O(n)
@@ -23,6 +28,7 @@ class ArrayMap
     end
     nil
   end
+  
 # O(n)
   def remove(key)
     @store.each_with_index do |pair, idx|
