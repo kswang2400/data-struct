@@ -41,9 +41,10 @@ Methods detailed below
 
 * [1. Data Structures](#1-data-structures)
   * [1.1 Dynamic Array](#11-dynamic-array)
-  * [1.2 Max Stack](#12-max-stack)
+  * [1.2 Singly Linked List](#12-singly-linked-list)
+  * [1.3 Max Stack](#13-max-stack)
 * [Contact](#contact)
-* [Contributing](#contributing)–––
+* [Contributing](#contributing)
 * [License](#license)
 
 ### 1.1 Dynamic Array
@@ -145,7 +146,55 @@ Ring buffer still in effect
   => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
 ```
 
-### 1.2 Max Stack
+### 1.2 Singly Linked List
+
+#### #initialize
+
+Initialize an empty Linked List object with a sentinel Link
+
+```ruby
+  linked_list = DataStruct::LinkedList.new
+  => #<SingleLinkedList:0x007fabbb1af5b8 @sentinel=#<SingleLink:0x007fabbb1af590 @next=nil, @val=nil>>
+```
+#### #push
+
+Pushes onto the end
+
+NOTHING HERE TO SEE :)
+
+#### #pop
+
+Pops from the end
+
+```ruby
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  linked_list.pop
+  => 3
+  linked_list.pop
+  => 2
+```
+
+#### #shift
+
+Shifts from the front
+
+```ruby
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  linked_list.shift
+  => 1
+  linked_list.shift
+  => 2
+```
+
+#### #unshift
+
+NOTHING HERE TO SEE :)
+
+### 1.3 Max Stack
 
 #### #initialize
 
