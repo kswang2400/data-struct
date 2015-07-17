@@ -1,4 +1,3 @@
-
 class DynamicArray
   # dynamic array with ring buffer
   attr_accessor :store, :size, :start
