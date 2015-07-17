@@ -1,60 +1,39 @@
+require "min_max_stack"
+
 class MinMaxQueue
   def initialize
-    @in, @out = [], []
+    @in, @out = MinMaxStack.new, MinMaxStack.new
   end
 
   # O(1)
   def push(val)
-    if @in.empty?
-      @in << [val, val, val]
-    else
-      max_val = [val, self.max].max
-      min_val = [val, self.min].min
-      @in << [val, min_val, max_val]
-    end
+    @in.push(val)
   end
 
   # O(1) amortized
   def shift
-    flip! if @out.empty?
+    flip! if @out.length == 0
 
     @out.pop
   end
 
   # O(1)
   def max
-    return @in[-1][2] if @out.empty?
-    return @out[-1][2] if @in.empty?
+    return @in.max if @out.length == 0
+    return @out.max if @in.length == 0
 
-    if @in[-1][2] > @out[-1][2]
-      @in[-1][2]
-    else
-      @out[-1][2]
-    end
+    @in.max > @out.max ? @in.max : @out.max
   end
 
   # O(1)
   def min
-    return @in[-1][1] if @out.empty?
-    return @out[-1][1] if @in.empty?
+    return @in.min if @out.length == 0
+    return @out.min if @in.length == 0
 
-    if @in[-1][1] < @out[-1][1]
-      @in[-1][1]
-    else
-      @out[-1][1]
-    end
+    @in.min < @out.min ? @in.min : @out.min
   end
 
   def flip!
-    @in.length.times do
-      val,_,_ = @in.pop
-      if @out.empty?
-        @out << [val, val, val]
-      else
-        max_val = [val, self.max].max
-        min_val = [val, self.min].min
-        @out << [val, min_val, max_val]
-      end
-    end
+    @in.length.times { @out.push(@in.pop) }
   end
 end

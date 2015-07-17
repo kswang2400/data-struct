@@ -5,6 +5,10 @@ class MinMaxStack
     @store = []
   end
 
+  def length
+    @store.length
+  end
+
   def max
     @store.empty? ? nil : @store[-1][2]
   end
