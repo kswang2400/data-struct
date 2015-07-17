@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'data-struct'
-  s.version     = '0.0.8'
+  s.version     = '0.0.9'
   s.date        = '2015-07-16'
   s.summary     = "Data structures, some up and running, not fully tested"
   s.description = "A simple gem that provides several useful implementations of data structures"
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
                     "lib/dynamic_array.rb", 
                     "lib/max_stack.rb", 
                     "lib/min_max_stack.rb", 
-                    "lib/singly_linked_list.rb", 
+                    "lib/single_linked_list.rb", 
                     "lib/stack_queue.rb"
                   ]
   s.homepage    =
