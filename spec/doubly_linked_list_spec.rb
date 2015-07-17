@@ -64,7 +64,6 @@ RSpec.describe LinkedList do
         shift1 = @linked_list.shift
         shift2 = @linked_list.shift
         expect(shift1).to eq 1
-        debugger;
         expect(shift2).to eq 2
       end
     end

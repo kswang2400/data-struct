@@ -32,7 +32,7 @@ class LinkedList
     link = Link.new(val)
     first_link = @begin_sentinel.next
     unless first_link.nil?
-      @begin_sentinel.next.prev, link.next = link, @begin_sentinel.next
+      first_link.prev, link.next = link, first_link
     else
       @last_sentinel.prev = link
     end
@@ -44,10 +44,9 @@ class LinkedList
   def shift
     first_link = @begin_sentinel.next
     return nil if first_link.nil?
-    val = first_link.val
-    @begin_sentinel = first_link.next
+    @begin_sentinel.next = first_link.next
 
-    val
+    first_link.val
   end
 end
 
