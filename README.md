@@ -5,8 +5,8 @@ A simple gem that provides several useful data structures including the followin
 * [ ] StaticArray
 * [x] DynamicArray
 * [ ] HashMap
-* [x] SingleLinkedList
-* [ ] \(double\) LinkedList
+* [x] SinglyLinkedList
+* [ ] \(doubly\) LinkedList
 * [ ] MinMaxQueue
 * [ ] \(priority\) Queue
 * [x] MaxStack
@@ -155,7 +155,7 @@ Ring buffer still in effect
 Initialize an empty Linked List object with a sentinel Link
 
 ```ruby
-  linked_list = DataStruct::LinkedList.new
+  linked_list = DataStruct::SinglyLinkedList.new
   => #<SingleLinkedList:0x007fabbb1af5b8 @sentinel=#<SingleLink:0x007fabbb1af590 @next=nil, @val=nil>>
 ```
 #### #push
