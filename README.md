@@ -28,8 +28,8 @@ Or require in Gemfile:
 To use the gem, initialize a new object through DataStruct
 
 ```ruby
-  linked_list = DataStruct.LinkedList.new
-  dynamic_array = DataStruct.DynamicArray.new(10)
+  linked_list = DataStruct::LinkedList.new
+  dynamic_array = DataStruct::DynamicArray.new(10)
 ```
 
 Methods detailed below
@@ -46,7 +46,7 @@ Methods detailed below
 Initialize with the size of your dynamic array
 
 ```ruby
-  d_array = DataStruct.DynamicArray.new(4)
+  d_array = DataStruct::DynamicArray.new(4)
   => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=10, @start=0, @store=[nil, nil, nil, nil]>
 ```
 
