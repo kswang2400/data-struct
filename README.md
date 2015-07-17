@@ -2,17 +2,21 @@
 
 A simple gem that provides several useful data structures including the following:
 
-* [ ] StaticArray
+Abstract Data Type
+* [ ] Map
+* [ ] Set
+* [x] MaxStack
+* [x] MinMaxStack
+* [ ] Queue
+
+Data Structures
 * [x] DynamicArray
 * [ ] HashMap
 * [x] SinglyLinkedList
 * [ ] \(doubly\) LinkedList
-* [ ] MinMaxQueue
-* [ ] \(priority\) Queue
-* [x] MaxStack
-* [x] MinMaxStack
 * [ ] LRUCache
-* [ ] Heaps
+* [ ] HashMap
+* [ ] Heap
 * [ ] BinarySearchTree
 
 ##Usage
