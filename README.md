@@ -30,7 +30,8 @@ Or require in Gemfile:
 To use the gem, initialize a new object through DataStruct
 
 ```ruby
-  linked_list = DataStruct::LinkedList.new
+  linked_list = DataStruct::SingleLinkedList.new
+  # default LinkedList class is doubly linked list; use SingleLinkedList for singly linked list
   dynamic_array = DataStruct::DynamicArray.new(10)
 ```
 
@@ -42,7 +43,7 @@ Methods detailed below
   * [1.1 Dynamic Array](#11-dynamic-array)
   * [1.2 Max Stack](#12-max-stack)
 * [Contact](#contact)
-* [Contributing](#contributing)
+* [Contributing](#contributing)–––
 * [License](#license)
 
 ### 1.1 Dynamic Array
@@ -53,7 +54,7 @@ Initialize with the size of your dynamic array
 
 ```ruby
   d_array = DataStruct::DynamicArray.new(4)
-  => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=10, @start=0, @store=[nil, nil, nil, nil]>
+  => #<DynamicArray:0x007ffe5c089460 @num_items=0, @size=4, @start=0, @store=[nil, nil, nil, nil]>
 ```
 
 #### #pop
