@@ -101,7 +101,7 @@ Shifts and returns the value at the front of the array; doesn't copy the array
 Unshifts the value into the front of the array
 
 ```ruby
-  d_array.store 
+  d_array.store
   => [nil, 2, 3, 4, 5, 6, 7, 8, nil, nil]
   d_array.unshift(100)
   => [100, 2, 3, 4, 5, 6, 7, 8, nil, nil]
@@ -109,7 +109,7 @@ Unshifts the value into the front of the array
 
 Uses ring buffer to wrap around
 
-```ruby 
+```ruby
   d_array.store
   => [100, 2, 3, 4, 5, 6, 7, 8, nil, nil]
   d_array.unshift(101)
@@ -137,6 +137,55 @@ Ring buffer still in effect
   d_array.isnert(200, 0)
   => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
 ```
+
+### 1.2 Max Stack
+
+#### #initialize
+
+Initialize your max stack.
+
+```ruby
+  max_stack = DataStruct.MaxStack
+  #=> <MaxStack:0x007f86c8a04c80 @store=[]>
+```
+
+#### #push(val)
+
+Pushes the value onto the end of the stack
+
+```ruby
+max_stack.store
+  #=> []
+max_stack.push(5)
+  #=> [[5, 5]]
+max_stack.store
+  #=> [[5, 5]]
+```
+
+#### #pop
+
+Pops the last element in the stack
+
+```ruby
+max_stack.store
+  #=> [[5, 5]]
+max_stack.pop
+  #=> [5, 5]
+max_stack.store
+  #=> []
+```
+
+#### #max
+
+Returns in the max value in O(1) time.
+
+```ruby
+max_stack.store
+  #=> [[5, 5], [2, 5], [6, 6], [7, 7]]
+max_stack.max
+  #=> 7
+```
+
 
 
 ##Contact
