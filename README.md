@@ -1,5 +1,7 @@
 # Data Structures
 
+A simple gem that provides several useful data structures including the following:
+
 * static arrays
 * dynamic arrays
 * hash map
@@ -38,6 +40,10 @@ Methods detailed below
 
 * [1. Data Structures](#1-data-structures)
   * [1.1 Dynamic Array](#11-dynamic-array)
+  * [1.2 Max Stack](#12-max-stack)
+* [Contact](#contact)
+* [Contributing](#contributing)
+* [License](#license)
 
 ### 1.1 Dynamic Array
 
@@ -134,7 +140,7 @@ Ring buffer still in effect
 ```ruby
   d_array.store
   => [100, 2, 3, 4, 5, 6, 7, 8, nil, 101]
-  d_array.isnert(200, 0)
+  d_array.insert(200, 0)
   => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
 ```
 
@@ -145,8 +151,8 @@ Ring buffer still in effect
 Initialize your max stack.
 
 ```ruby
-  max_stack = DataStruct.MaxStack
-  #=> <MaxStack:0x007f86c8a04c80 @store=[]>
+  max_stack = DataStruct::MaxStack.new
+  => <MaxStack:0x007f86c8a04c80 @store=[]>
 ```
 
 #### #push(val)
@@ -154,12 +160,12 @@ Initialize your max stack.
 Pushes the value onto the end of the stack
 
 ```ruby
-max_stack.store
-  #=> []
-max_stack.push(5)
-  #=> [[5, 5]]
-max_stack.store
-  #=> [[5, 5]]
+  max_stack.store
+  => []
+  max_stack.push(5)
+  => [[5, 5]]
+  max_stack.store
+  => [[5, 5]]
 ```
 
 #### #pop
@@ -167,12 +173,12 @@ max_stack.store
 Pops the last element in the stack
 
 ```ruby
-max_stack.store
-  #=> [[5, 5]]
-max_stack.pop
-  #=> [5, 5]
-max_stack.store
-  #=> []
+  max_stack.store
+  => [[5, 5]]
+  max_stack.pop
+  => [5, 5]
+  max_stack.store
+  => []
 ```
 
 #### #max
@@ -180,13 +186,11 @@ max_stack.store
 Returns in the max value in O(1) time.
 
 ```ruby
-max_stack.store
-  #=> [[5, 5], [2, 5], [6, 6], [7, 7]]
-max_stack.max
-  #=> 7
+  max_stack.store
+  => [[5, 5], [2, 5], [6, 6], [7, 7]]
+  max_stack.max
+  => 7
 ```
-
-
 
 ##Contact
 
