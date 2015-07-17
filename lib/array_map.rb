@@ -5,7 +5,6 @@ class ArrayMap
     @store = []
   end
 
-
 # O(n)
   def insert(key, value)
     pair = find(key)
@@ -28,7 +27,7 @@ class ArrayMap
     end
     nil
   end
-  
+
 # O(n)
   def remove(key)
     @store.each_with_index do |pair, idx|
