@@ -15,7 +15,7 @@ class MaxStack
   end
 
   def pop
-    @store.pop
+    @store.pop[0]
   end
 
   def max
