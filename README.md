@@ -32,8 +32,8 @@ Or require in Gemfile:
 To use the gem, initialize a new object through DataStruct
 
 ```ruby
-  linked_list = DataStruct::SingleLinkedList.new
-  # default LinkedList class is doubly linked list; use SingleLinkedList for singly linked list
+  linked_list = DataStruct::SinglyLinkedList.new
+  # default LinkedList class is doubly linked list; use SinglyLinkedList for singly linked list
   dynamic_array = DataStruct::DynamicArray.new(10)
 ```
 
