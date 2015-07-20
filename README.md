@@ -19,7 +19,7 @@ Data Structures
 - [ ] Heap
 - [ ] BinarySearchTree
 
-http://www.rubydoc.info/github/kswang2400/data-struct/master/BSTNode
+http://www.rubydoc.info/github/kswang2400/data-struct/
 
 ##Usage
 
