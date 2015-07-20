@@ -3,21 +3,23 @@
 A simple gem that provides several useful data structures including the following:
 
 Abstract Data Type
-* [ ] Map
-* [ ] Set
-* [x] MaxStack
-* [x] MinMaxStack
-* [ ] Queue
+- [ ] Map
+- [ ] Set
+- [x] MaxStack
+- [x] MinMaxStack
+- [ ] Queue
 
 Data Structures
-* [x] DynamicArray
-* [ ] HashMap
-* [x] SinglyLinkedList
-* [ ] \(doubly\) LinkedList
-* [ ] LRUCache
-* [ ] HashMap
-* [ ] Heap
-* [ ] BinarySearchTree
+- [x] DynamicArray
+- [ ] HashMap
+- [x] SinglyLinkedList
+- [ ] \(doubly\) LinkedList
+- [ ] LRUCache
+- [ ] HashMap
+- [ ] Heap
+- [ ] BinarySearchTree
+
+http://www.rubydoc.info/github/kswang2400/data-struct/master/BSTNode
 
 ##Usage
 
@@ -33,7 +35,7 @@ Or require in Gemfile:
   gem 'data-struct'
 ```
 
-To use the gem, initialize a new object through DataStruct
+To use the gem, initialize a new object through the DataStruct module
 
 ```ruby
   linked_list = DataStruct::SinglyLinkedList.new
@@ -41,7 +43,7 @@ To use the gem, initialize a new object through DataStruct
   dynamic_array = DataStruct::DynamicArray.new(10)
 ```
 
-Methods detailed below
+Class names correspond with list above. Methods detailed below
 
 ## Contents
 
