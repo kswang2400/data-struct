@@ -10,12 +10,16 @@ RSpec.describe BSTNode do
       expect(@node.value).to eq 10
     end
 
-    it "should initialize with nil children" do
-      expect(@node.left).to be_nil
-      expect(@node.right).to be_nil
+    it "should initialize with empty node children" do
+      expect(@node.left.class).to be EmptyNode
+      expect(@node.right.class).to be EmptyNode
     end
   end
   describe "#insert" do
-    
+
+  end
+
+  describe "#include?" do
+
   end
 end

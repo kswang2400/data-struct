@@ -248,9 +248,25 @@ Returns in the max value in O(1) time.
 
 putting this here for now, benchmark
 
-       user     system      total        real
-test_array include  0.730000   0.010000   0.740000 (  0.727200)
-binary tree serach  0.010000   0.000000   0.010000 (  0.008871)
+```ruby
+  test_array = []
+  5000.times { test_array << (rand 5000) }
+
+  tree = BSTNode.new(test_array.first)
+  test_array.each { |v| tree.insert(v) }
+  test_hash = Hash[test_array.map { |x| [x, true] }]
+
+  Benchmark.bm do |benchmark|
+    benchmark.report("test_array include" ) { (1..5000).each { |n| test_array.include? n } }
+    benchmark.report("binary tree serach")  { (1..5000).each { |n| tree.include? n } } 
+    benchmark.report("test_hash lookup ")   { (1..5000).each { |n| test_hash.has_key? n }}
+  end
+
+                      user     system      total        real
+  test_array include  0.680000   0.000000   0.680000 (  0.682606)
+  binary tree serach  0.010000   0.000000   0.010000 (  0.008562)
+  test_hash lookup    0.000000   0.000000   0.000000 (  0.001221)
+```
 
 ##Contact
 

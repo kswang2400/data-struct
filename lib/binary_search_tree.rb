@@ -54,15 +54,4 @@ class EmptyNode
   end
 end
 
-test_array = []
-5000.times { test_array << (rand 5000) }
-
-tree = BSTNode.new(test_array.first)
-test_array.each { |v| tree.insert(v) }
-
-Benchmark.bm do |benchmark|
-  benchmark.report("test_array include" ) { (1..5000).each { |n| test_array.include? n } }
-  benchmark.report("binary tree serach")  { (1..5000).each { |n| tree.include? n } } 
-end
-
 
