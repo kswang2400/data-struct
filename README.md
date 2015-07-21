@@ -13,7 +13,7 @@ A simple gem that provides several useful data structures including the followin
 * [x] MinMaxStack
 * [ ] LRUCache
 * [ ] Heaps
-* [ ] BinarySearchTree
+* [X] BinarySearchTree
 
 ##Usage
 
@@ -45,6 +45,7 @@ Methods detailed below
   * [1.1 Dynamic Array](#11-dynamic-array)
   * [1.2 Singly Linked List](#12-singly-linked-list)
   * [1.3 Max Stack](#13-max-stack)
+  * [1.4 Binary Search Tree](#14-binary-search-tree)
 * [Contact](#contact)
 * [Contributing](#contributing)
 * [License](#license)
@@ -244,9 +245,72 @@ Returns in the max value in O(1) time.
   => 7
 ```
 
-### 1.? Binary Search Tree
+### 1.4 Binary Search Tree
 
-putting this here for now, benchmark
+#### #initialize 
+
+initialize with your root node
+
+```ruby
+  tree = BSTNode.new(10)
+  =>  { 10 : { } | { } } 
+```
+
+#### .from_array
+
+class method to initialize tree from an array
+
+```ruby
+  tree = BSTNode.from_array([1, 5, 2, 6, 8, 10, 3])
+  =>  { 6 :  
+        { 2 :  
+          { 1 : { } | { } }  |  { 5 :  
+                        { 3 : { } | { } }  | { } 
+                                }  
+        }  |  
+        { 8 : { } |  
+          { 10 : { } | { } }  
+        }  
+      }
+```
+
+#### #insert(val)
+
+inserts the value in the correct position, then rebalances
+
+```ruby
+  tree = BSTNode.new(10)
+  tree.insert(15)
+  =>  { 10 : { } |  { 15 : { } | { } }  } 
+  tree.insert(13)
+  =>  { 13 :  { 10 : { } | { } }  |  { 15 : { } | { } }  } 
+```
+
+#### #include?(val)
+
+checks tree for presence of value
+
+```ruby
+  tree = BSTNode.new(10)
+  tree.insert(15)
+  tree.include?(15)
+  => true
+  tree.include?(14)
+  => false
+```
+
+#### #to_a
+
+returns the tree in sorted array form
+
+```ruby
+  tree = BSTNode.from_array([10, 5, 7, 15, 12, 0])
+  =>  { 7 :  { 5 :  { 0 : { } | { } }  | { } }  |  { 12 :  { 10 : { } | { } }  |  { 15 : { } | { } }  }  }
+  tree.to_a
+  => [0, 5, 7, 10, 12, 15]
+```
+
+#### benchmark testing
 
 ```ruby
   test_array = []
