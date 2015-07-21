@@ -20,7 +20,6 @@ Data Structures
 - [x] BinarySearchTree
 
 http://www.rubydoc.info/github/kswang2400/data-struct/
->>>>>>> master
 
 ##Usage
 
