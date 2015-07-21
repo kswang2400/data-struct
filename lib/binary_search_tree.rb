@@ -9,6 +9,12 @@ class BSTNode
     @right = EmptyNode.new
   end
 
+  def self.from_array(array)
+    BSTNode.new(array.first).tap do |tree|
+      array.each { |val| tree.insert(val) }
+    end
+  end
+
   def insert(val)
     case val <=> value
     when -1 then insert_left(val)
@@ -27,6 +33,10 @@ class BSTNode
     when 1 then right.include?(val)
     when 0 then true
     end
+  end
+
+  def to_a
+    left.to_a + [value] + right.to_a
   end
 
   private
@@ -52,6 +62,13 @@ class EmptyNode
   def inspect
     "{ }"
   end
+
+  def to_a
+    []
+  end
 end
 
-
+array = [1, 5, 2, 6, 8, 10, 3]
+tree = BSTNode.from_array(array)
+p tree
+p tree.to_a
