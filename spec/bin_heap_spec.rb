@@ -25,7 +25,7 @@ describe "Heap" do
       @heap2 = BinHeap.new do |el1, el2| 
         el2 <=> el1 
       end
-      
+
       @heap2.insert(4)
       @heap2.insert(3)
       @heap2.insert(6)
@@ -44,11 +44,17 @@ describe "Heap" do
     end
 
     it 'Returns the element with the highest priority' do
-      expect(@heap.extract).to eq([3, 2, 4, 5, 6])
+      expect(@heap.extract).to eq(0)
+    end
+
+    it 'Heapifies down to maintain order by priority' do
+      @heap.extract
+      expect(@heap.store).to eq([2, 3, 6, 4, 5])
     end
 
     it 'Uses comparison given by user' do
-      subject (:heap2) { BinHeap.new { |el1, el2| el2 <=> el1 }}
+      heap2 = BinHeap.new { |el1, el2| el2 <=> el1 }
+      
       heap2.insert(4)
       heap2.insert(3)
       heap2.insert(6)
@@ -57,27 +63,27 @@ describe "Heap" do
       heap2.insert(7)      
       heap2.extract
 
-      expect(heap2.store).to eq([7, 5, 6, 2, 3, 4])
+      expect(heap2.store).to eq([6, 5, 4, 2, 3])
     end
   end
 
   describe "::heapify_up" do
     it "Orders the heap by priority by taking the inserted element and working up the heap by comparing the element to its parent" do
       @heap.store << 1
-      expect(BinHeap.heapify_up(@heap.store, 6).to eq([0, 3, 1, 4, 5, 6, 2]))
+      expect(BinHeap.heapify_up(@heap.store, 6)).to eq([0, 3, 1, 4, 5, 6, 2])
     end
   end
 
   describe "::heapify_down" do 
     it "Orders the heap by placing the last element at the root position working its way down the heap until it meets the priority condition" do
       @heap.store.unshift(3.5)
-      expect(BinHeap.heapify_down(@heap.store, 0)).to eq([])
+      expect(BinHeap.heapify_down(@heap.store, 0)).to eq([0, 2, 3, 3.5, 4, 5, 6])
     end
   end
 
   describe "::find_children" do
     it "Finds the current parent's children" do
-      expect(BinHeap.find_children(2)).to eq([5, 6])
+      expect(BinHeap.find_children(6, 2)).to eq([5, 6])
     end
   end
 

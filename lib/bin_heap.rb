@@ -22,6 +22,7 @@ class BinHeap
     else
       @store.pop
     end
+    
     top_priority  
   end
 
@@ -44,23 +45,41 @@ class BinHeap
     end
 
     def self.heapify_down(store, parent_idx, &prc)
-      children_idx = find_children(parent_idx)
-      c1_idx = children_idx[0]
-      c2_idx = children_idx[1]
+      prc = prc || Proc.new { |el1, el2| el1 <=> el2 }      
+      
+      children_idx = find_children(store.length - 1, parent_idx)
+      
+      c0_idx = children_idx[0]
+      c1_idx = children_idx[1]
 
-      if (store[c1_idx] != nil) && (prc.call(store[c1_idx], store[parent_idx]) == 1)
-        store[c1_idx], store[parent_idx] = store[parent_idx], store[c1_idx]
-        heapify_down(store, c1_idx, prc)
-      elsif (store[c1_idx] != nil) && (prc.call(store[c2_idx], store[parent_idx]) == 1)
-        store[c2_idx], store[parent_idx] = store[parent_idx], store[c2_idx]
-        heapify_down(store, c2_idx, prc)
-      else
+      children = []
+      children << store[c0_idx] if c0_idx
+      children << store[c1_idx] if c1_idx
+
+      parent = store[parent_idx]
+
+      #When the parent index is where it's supposed to be
+      if children.all? { |child| prc.call(child, parent) >= 0}
         return store
       end
+
+      if store.length == 1
+        swap_idx = c0_idx
+      else
+        swap_idx = prc.call(children[0], children[1]) == 1 ? c1_idx : c0_idx
+      end
+
+      store[swap_idx], store[parent_idx] = parent, store[swap_idx]
+
+      heapify_down(store, swap_idx, &prc)
     end
 
-    def self.find_children(parent_idx)
-      return [(parent_idx * 2) + 1, (parent_idx * 2) + 2]
+    def self.find_children(last_idx, parent_idx)
+      child1 = (parent_idx * 2) + 1
+      child2 = (parent_idx * 2) + 2
+
+
+      return [child1, child2].select{ |idx| idx <= last_idx }
     end
 
     def self.find_parent(child_idx)
