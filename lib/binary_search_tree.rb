@@ -42,6 +42,8 @@ class BSTNode
     when 1 then insert_right(val)
     when 0 then false
     end
+
+    self
   end
 
   def inspect
