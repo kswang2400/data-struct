@@ -29,22 +29,20 @@ class BSTNode
   end
 
   def left_rotate
-    new_right = self.right.right
-    new_right.parent = self
     new_left = BSTNode.new(value)
-    new_left.right = right.left
-    new_left.left = left
-    new_left.parent = self
+
+    new_right, new_right.parent = self.right.right, self
+    new_left.right, new_left.left, new_left.parent = right.left, left, self
+    
     @value, @left, @right = right.value, new_left, new_right
   end
 
   def right_rotate
-    new_left = self.left.left
-    new_left.parent = self
     new_right = BSTNode.new(value)
-    new_right.left = left.right
-    new_right.right = right
-    new_right.parent = self
+
+    new_left, new_left.parent = self.left.left, self
+    new_right.left, new_right.right, new_right.parent = left.right, right, self
+
     @value, @left, @right = left.value, new_left, new_right
   end
 
