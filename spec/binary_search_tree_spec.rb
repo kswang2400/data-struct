@@ -18,10 +18,12 @@ RSpec.describe BSTNode do
 
   describe ".from_array" do
     it "should be able to convert an array to a tree" do
+      # not done yet, haven't finished rebalancing
       tree = BSTNode.from_array([1, 5, 2, 6, 8, 10, 3])
-      expect(tree.value).to eq 1
-      expect(tree.left.class).to be EmptyNode
-      expect(tree.right.value).to eq 5
+      p tree.left.balance, tree.left.left.depth, tree.left.right.depth
+      expect(tree.value).to eq 5
+      expect(tree.left.value).to eq 1
+      expect(tree.right.value).to eq 8
     end
   end
 
@@ -50,14 +52,16 @@ RSpec.describe BSTNode do
     context "should be able to insert at multiple levels" do
       it "traverse left" do
         @root.insert(5)
+        @root.insert(3)
         @root.insert(1)
         expect(@root.left.left.value).to eq 1
       end
 
       it "traverse right" do
         @root.insert(15)
-        @root.insert(25)
-        expect(@root.right.right.value).to eq 25
+        @root.insert(17)
+        @root.insert(19)
+        expect(@root.right.right.value).to eq 19
       end
     end
   end
