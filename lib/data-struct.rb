@@ -8,15 +8,8 @@ require_relative "single_linked_list"
 # require_relative "stack_queue"
 
 module DataStruct
-  class DynamicArray < DynamicArray
-  end
-
-  class MaxStack < MaxStack
-  end
-
-  class MinMaxStack < MinMaxStack
-  end
-
-  class SingleLinkedList < SingleLinkedList
-  end
+  class DynamicArray < DynamicArray; end
+  class MaxStack < MaxStack; end
+  class MinMaxStack < MinMaxStack; end
+  class SingleLinkedList < SingleLinkedList; end
 end
