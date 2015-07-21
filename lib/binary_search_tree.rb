@@ -12,16 +12,6 @@ class BSTNode
     @balance = 0
   end
 
-  def rebalance
-    if @balance == -2
-      left.left_rotate if left.balance == 1
-      right_rotate
-    elsif @balance == 2
-      right.right_rotate if right.balance == -1
-      left_rotate
-    end
-  end
-
   def self.from_array(array)
     BSTNode.new(array.first).tap do |tree|
       array.each { |val| tree.insert(val) }
@@ -79,11 +69,6 @@ class BSTNode
 
   private
 
-  def recalculate_depth_and_balance
-    @depth = ([left.depth, right.depth].max + 1)
-    @balance = right.depth - left.depth
-  end
-
   def insert_left(val)
     if (left.class != EmptyNode)
       left.insert(val)
@@ -102,6 +87,21 @@ class BSTNode
       self.right, new_node.parent = new_node, self
       new_node.update_depth_and_balance
     end
+  end
+
+  def rebalance
+    if @balance == -2
+      left.left_rotate if left.balance == 1
+      right_rotate
+    elsif @balance == 2
+      right.right_rotate if right.balance == -1
+      left_rotate
+    end
+  end
+
+  def recalculate_depth_and_balance
+    @depth = ([left.depth, right.depth].max + 1)
+    @balance = right.depth - left.depth
   end
 end
 
