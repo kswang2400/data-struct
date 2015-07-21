@@ -1,10 +1,12 @@
+require "benchmark"
+
 class BSTNode
   attr_accessor :value, :left, :right
 
   def initialize(value)
     @value = value
-    @left = nil
-    @right = nil
+    @left = EmptyNode.new
+    @right = EmptyNode.new
   end
 
   def insert(val)
@@ -30,24 +32,37 @@ class BSTNode
   private
 
   def insert_left(val)
-    (!!left) ? left.insert(val) : self.left = BSTNode.new(val)
+    left.insert(val) or self.left = BSTNode.new(val)
   end
 
   def insert_right(val)
-    (!!right) ? right.insert(val) : self.right = BSTNode.new(val)
+    right.insert(val) or self.right = BSTNode.new(val)
   end
 end
 
-tree = BSTNode.new(10)
-tree.left = BSTNode.new(5)
-tree.right = BSTNode.new(15)
+class EmptyNode
+  def include?(*)
+    false
+  end
 
-p tree
-tree.insert(20)
-p tree
+  def insert(*)
+    false
+  end
 
-p tree.include?(10)
-p tree.include?(5)
-p tree.include?(15)
-p tree.include?(20)
-# p tree.include?(200)
+  def inspect
+    "{ }"
+  end
+end
+
+test_array = []
+5000.times { test_array << (rand 5000) }
+
+tree = BSTNode.new(test_array.first)
+test_array.each { |v| tree.insert(v) }
+
+Benchmark.bm do |benchmark|
+  benchmark.report("test_array include" ) { (1..5000).each { |n| test_array.include? n } }
+  benchmark.report("binary tree serach")  { (1..5000).each { |n| tree.include? n } } 
+end
+
+

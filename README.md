@@ -244,6 +244,14 @@ Returns in the max value in O(1) time.
   => 7
 ```
 
+### 1.? Binary Search Tree
+
+putting this here for now, benchmark
+
+       user     system      total        real
+test_array include  0.730000   0.010000   0.740000 (  0.727200)
+binary tree serach  0.010000   0.000000   0.010000 (  0.008871)
+
 ##Contact
 
 * [Karen Ling](https://github.com/karenling)
