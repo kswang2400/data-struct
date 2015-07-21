@@ -46,25 +46,41 @@ class BSTNode
     left.to_a + [value] + right.to_a
   end
 
+  def update_depth
+    @depth = ([left.depth, right.depth].max + 1)
+    @parent.update_depth
+  end
+
   private
 
   def insert_left(val)
-    # left.insert(val) or self.left = BSTNode.new(val)
     if (left.class != EmptyNode)
       left.insert(val)
     else
       new_node = BSTNode.new(val)
-      self.left = new_node
-      new_node.parent = self
+      self.left, new_node.parent = new_node, self
+      new_node.update_depth
     end
   end
 
   def insert_right(val)
-    right.insert(val) or self.right = BSTNode.new(val)
+    if (right.class != EmptyNode)
+      right.insert(val)
+    else
+      new_node = BSTNode.new(val)
+      self.right, new_node.parent = new_node, self
+      new_node.update_depth
+    end
   end
 end
 
 class EmptyNode
+  attr_reader :depth
+
+  def initialize
+    @depth = 0
+  end
+
   def include?(*)
     false
   end
@@ -80,9 +96,20 @@ class EmptyNode
   def to_a
     []
   end
+
+  def update_depth
+    true
+  end
 end
 
-array = [1, 5, 2, 6, 8, 10, 3]
-tree = BSTNode.from_array(array)
-p tree
-p tree.to_a
+tree = BSTNode.new(10)
+tree.insert(9)
+p tree, tree.depth, tree.left.depth, tree.right.depth
+tree.insert(8)
+p tree, tree.depth, tree.left.depth, tree.right.depth
+tree.insert(11)
+p tree, tree.depth, tree.left.depth, tree.right.depth
+tree.insert(12)
+p tree, tree.depth, tree.left.depth, tree.right.depth
+tree.insert(13)
+p tree, tree.depth, tree.left.depth, tree.right.depth
