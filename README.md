@@ -2,20 +2,6 @@
 
 A simple gem that provides several useful data structures including the following:
 
-<<<<<<< HEAD
-* [ ] StaticArray
-* [x] DynamicArray
-* [ ] HashMap
-* [x] SinglyLinkedList
-* [ ] \(doubly\) LinkedList
-* [ ] MinMaxQueue
-* [ ] \(priority\) Queue
-* [x] MaxStack
-* [x] MinMaxStack
-* [ ] LRUCache
-* [ ] Heaps
-* [X] BinarySearchTree
-=======
 Abstract Data Type
 - [ ] Map
 - [ ] Set
@@ -31,7 +17,7 @@ Data Structures
 - [ ] LRUCache
 - [ ] HashMap
 - [ ] Heap
-- [ ] BinarySearchTree
+- [x] BinarySearchTree
 
 http://www.rubydoc.info/github/kswang2400/data-struct/
 >>>>>>> master
