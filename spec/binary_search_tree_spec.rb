@@ -18,11 +18,9 @@ RSpec.describe BSTNode do
 
   describe ".from_array" do
     it "should be able to convert an array to a tree" do
-      # not done yet, haven't finished rebalancing
       tree = BSTNode.from_array([1, 5, 2, 6, 8, 10, 3])
-      p tree.left.balance, tree.left.left.depth, tree.left.right.depth
-      expect(tree.value).to eq 5
-      expect(tree.left.value).to eq 1
+      expect(tree.value).to eq 6
+      expect(tree.left.value).to eq 2
       expect(tree.right.value).to eq 8
     end
   end

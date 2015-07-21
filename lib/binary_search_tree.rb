@@ -1,4 +1,3 @@
-require "benchmark"
 
 class BSTNode
   attr_reader :value
@@ -15,7 +14,11 @@ class BSTNode
 
   def rebalance
     if @balance == -2
+      left.left_rotate if left.balance == 1
+      right_rotate
     elsif @balance == 2
+      right.right_rotate if right.balance == -1
+      left_rotate
     end
   end
 
@@ -27,17 +30,21 @@ class BSTNode
 
   def left_rotate
     new_right = self.right.right
+    new_right.parent = self
     new_left = BSTNode.new(value)
     new_left.right = right.left
     new_left.left = left
+    new_left.parent = self
     @value, @left, @right = right.value, new_left, new_right
   end
 
   def right_rotate
     new_left = self.left.left
+    new_left.parent = self
     new_right = BSTNode.new(value)
     new_right.left = left.right
     new_right.right = right
+    new_right.parent = self
     @value, @left, @right = left.value, new_left, new_right
   end
 
@@ -102,9 +109,11 @@ end
 
 class EmptyNode
   attr_reader :depth
+  attr_accessor :parent
 
   def initialize
     @depth = 0
+    @parent = nil
   end
 
   def include?(*)
@@ -128,14 +137,4 @@ class EmptyNode
   end
 end
 
-tree = BSTNode.new(5)
-tree.insert(6)
-tree.insert(7)
-p tree
-tree.insert(8)
-p tree
-tree.insert(9)
-p tree, tree.depth, tree.balance, tree.right.depth, tree.left.depth
-tree.insert(10)
-p tree, tree.depth, tree.balance, tree.right.depth, tree.left.depth
 
