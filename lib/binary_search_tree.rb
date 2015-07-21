@@ -1,12 +1,19 @@
 require "benchmark"
 
 class BSTNode
-  attr_accessor :value, :left, :right
+  attr_reader :value
+  attr_accessor :parent, :left, :right, :depth
 
   def initialize(value)
     @value = value
+    @parent = EmptyNode.new
     @left = EmptyNode.new
     @right = EmptyNode.new
+    @depth = 1
+  end
+
+  def self.balance
+
   end
 
   def self.from_array(array)
@@ -42,7 +49,14 @@ class BSTNode
   private
 
   def insert_left(val)
-    left.insert(val) or self.left = BSTNode.new(val)
+    # left.insert(val) or self.left = BSTNode.new(val)
+    if (left.class != EmptyNode)
+      left.insert(val)
+    else
+      new_node = BSTNode.new(val)
+      self.left = new_node
+      new_node.parent = self
+    end
   end
 
   def insert_right(val)
