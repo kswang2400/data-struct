@@ -1,5 +1,5 @@
 # singly linked list
-class SingleLinkedList
+class SinglyLinkedList
   attr_reader :sentinel
 
   def initialize
@@ -24,7 +24,7 @@ class SingleLinkedList
 
   def shift
     first_link = @sentinel.next
-    raise "cannot shift from empty list" if prev.nil?
+    raise "cannot shift from empty list" if first_link.nil?
     val = first_link.val
     @sentinel.next = first_link.next
 

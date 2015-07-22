@@ -2,16 +2,24 @@
 
 A simple gem that provides several useful data structures including the following:
 
-* static arrays
-* dynamic arrays
-* hash map
-* singly linked list
-* doubly linked list
-* queue
-* stack
-* LRU cache
-* heaps
-* binary search tree
+Abstract Data Type
+- [ ] Map
+- [ ] Set
+- [x] MaxStack
+- [x] MinMaxStack
+- [ ] Queue
+
+Data Structures
+- [x] DynamicArray
+- [ ] HashMap
+- [x] SinglyLinkedList
+- [ ] \(doubly\) LinkedList
+- [ ] LRUCache
+- [ ] HashMap
+- [x] Heap
+- [ ] BinarySearchTree
+
+http://www.rubydoc.info/github/kswang2400/data-struct/
 
 ##Usage
 
@@ -27,23 +35,25 @@ Or require in Gemfile:
   gem 'data-struct'
 ```
 
-To use the gem, initialize a new object through DataStruct
+To use the gem, initialize a new object through the DataStruct module
 
 ```ruby
-  linked_list = DataStruct::SingleLinkedList.new
-  # default LinkedList class is doubly linked list; use SingleLinkedList for singly linked list
+  linked_list = DataStruct::SinglyLinkedList.new
+  # default LinkedList class is doubly linked list; use SinglyLinkedList for singly linked list
   dynamic_array = DataStruct::DynamicArray.new(10)
 ```
 
-Methods detailed below
+Class names correspond with list above. Methods detailed below
 
 ## Contents
 
 * [1. Data Structures](#1-data-structures)
   * [1.1 Dynamic Array](#11-dynamic-array)
-  * [1.2 Max Stack](#12-max-stack)
+  * [1.2 Singly Linked List](#12-singly-linked-list)
+  * [1.3 Max Stack](#13-max-stack)
+  * [1.4 Binary Heap](#14-bin-heap)
 * [Contact](#contact)
-* [Contributing](#contributing)–––
+* [Contributing](#contributing)
 * [License](#license)
 
 ### 1.1 Dynamic Array
@@ -145,7 +155,55 @@ Ring buffer still in effect
   => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
 ```
 
-### 1.2 Max Stack
+### 1.2 Singly Linked List
+
+#### #initialize
+
+Initialize an empty Linked List object with a sentinel Link
+
+```ruby
+  linked_list = DataStruct::SinglyLinkedList.new
+  => #<SingleLinkedList:0x007fabbb1af5b8 @sentinel=#<SingleLink:0x007fabbb1af590 @next=nil, @val=nil>>
+```
+#### #push
+
+Pushes onto the end
+
+NOTHING HERE TO SEE :)
+
+#### #pop
+
+Pops from the end
+
+```ruby
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  linked_list.pop
+  => 3
+  linked_list.pop
+  => 2
+```
+
+#### #shift
+
+Shifts from the front
+
+```ruby
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  linked_list.shift
+  => 1
+  linked_list.shift
+  => 2
+```
+
+#### #unshift
+
+NOTHING HERE TO SEE :)
+
+### 1.3 Max Stack
 
 #### #initialize
 
@@ -153,7 +211,7 @@ Initialize your max stack.
 
 ```ruby
   max_stack = DataStruct::MaxStack.new
-  => <MaxStack:0x007f86c8a04c80 @store=[]>
+  => #<MaxStack:0x007f86c8a04c80 @store=[]>
 ```
 
 #### #push(val)
@@ -192,6 +250,81 @@ Returns in the max value in O(1) time.
   max_stack.max
   => 7
 ```
+### 1.4 Binary Heap
+
+#### #initialize(&prc)
+
+Initialize the binary heap:
+
+```ruby
+  heap = DataStruct::BinHeap.new
+  => #<BinHeap:0x007f8e38bc3928 @prc=#<Proc:0x007f8e38bc38b0@lib/bin_heap.rb:6>, @store=[]>
+```
+
+Default comparison Proc (MinHeap):
+
+```ruby
+  @prc = Proc.new { |el1, el2| el1 <=> el2 }
+```
+
+#### #insert(element)
+
+Insert a element into the heap, which will be placed in the correct position via ::heapify_up
+
+```ruby
+  bin_heap.insert(4)
+  bin_heap.insert(3)
+  bin_heap.insert(6)
+  bin_heap.insert(0)
+  bin_heap.insert(5)
+  bin_heap.insert(2)
+
+  bin_heap.store 
+  => [0, 3, 2, 4, 5, 6]
+```
+
+#### #extract
+
+Removes the element with the highest priority and re-organizes the binary heap accordingly via ::heapify_down
+
+```ruby
+  bin_heap.extract
+  => 0
+
+  bin_heap.store
+  => [2, 3, 6, 4, 5]
+```
+
+#### ::heapify_up(store, child_idx, &prc)
+
+1. Starts with the last element, store[child_idx], and compares it to its parent to see if priority holds. 
+2. If it does, the binary heap is ordered properly. 
+3. If it does not, swap the child and parent elements, and call ::heapify_up recursively until the binary heap is ordered. 
+
+#### ::heapify_down(store, parent_idx, &prc)
+
+1. Starts with the first element and compares it to its children to see if priority holds
+2. If it does, the binary heap is ordered properly 
+3. If it does not, swap with the child of higher priority if applicable and call ::heapify_down recursively until the heap is ordered. 
+
+#### ::find_children(last_idx, parent_idx)
+
+Due to the nature of a binary heap being a full tree, we can find children indices using a parent_idx by using some arithmetic: 
+
+```ruby
+  left_child_idx = (parent_idx * 2) + 1
+  right_child_idx = (parent_idx * 2) + 2
+``` 
+
+#### ::find_parent(child_idx)
+
+Similary to ::find_children, we can find a child's parent by solving for parent_idx. 
+
+In Ruby, since division of two integers are rounded down to the nearest integer, unles specified, we do not have to solve for the case of a child being the left child or the right child:
+
+```ruby
+  parent_idx = (child_idx - 1) / 2
+```
 
 ##Contact
 
@@ -199,6 +332,7 @@ Returns in the max value in O(1) time.
 * [Daniel Ng](https://github.com/danielng09)
 * [Conan Tzou](https://github.com/conanza)
 * [Kevin Wang](https://github.com/kswang2400)
+* [Aaron Hong](https://github.com/gnoha)
 
 ##Contributing
 

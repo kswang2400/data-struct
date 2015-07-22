@@ -1,4 +1,4 @@
-require "min_max_stack"
+require_relative "min_max_stack"
 
 class MinMaxQueue
   def initialize
