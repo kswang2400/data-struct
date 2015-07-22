@@ -260,7 +260,7 @@ initialize with your root node
 
 ```ruby
   tree = BSTNode.new(10)
-  =>  { 10 : { } | { } } 
+  =>  { 10 : {} | {} } 
 ```
 
 #### .from_array
@@ -271,12 +271,12 @@ class method to initialize tree from an array
   tree = BSTNode.from_array([1, 5, 2, 6, 8, 10, 3])
   =>  { 6 :  
         { 2 :  
-          { 1 : { } | { } }  |  { 5 :  
-                        { 3 : { } | { } }  | { } 
+          { 1 : {} | {} }  |  { 5 :  
+                        { 3 : {} | {} }  | {} 
                                 }  
         }  |  
-        { 8 : { } |  
-          { 10 : { } | { } }  
+        { 8 : {} |  
+          { 10 : {} | {} }  
         }  
       }
 ```
@@ -288,9 +288,9 @@ inserts the value in the correct position, then rebalances
 ```ruby
   tree = BSTNode.new(10)
   tree.insert(15)
-  =>  { 10 : { } |  { 15 : { } | { } }  } 
+  =>  { 10 : {} |  { 15 : {} | {} }  } 
   tree.insert(13)
-  =>  { 13 :  { 10 : { } | { } }  |  { 15 : { } | { } }  } 
+  =>  { 13 :  { 10 : {} | {} }  |  { 15 : {} | {} }  } 
 ```
 
 #### #include?(val)
@@ -312,7 +312,7 @@ returns the tree in sorted array form
 
 ```ruby
   tree = BSTNode.from_array([10, 5, 7, 15, 12, 0])
-  =>  { 7 :  { 5 :  { 0 : { } | { } }  | { } }  |  { 12 :  { 10 : { } | { } }  |  { 15 : { } | { } }  }  }
+  =>  { 7 :  { 5 :  { 0 : {} | {} }  | {} }  |  { 12 :  { 10 : {} | {} }  |  { 15 : {} | {} }  }  }
   tree.to_a
   => [0, 5, 7, 10, 12, 15]
 ```
