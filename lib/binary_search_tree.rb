@@ -1,7 +1,7 @@
 
 require "benchmark"
 
-class BSTNode
+class BinarySearchTree
   attr_reader :value
   attr_accessor :parent, :left, :right, :depth, :balance
 
@@ -15,7 +15,7 @@ class BSTNode
   end
 
   def self.from_array(array)
-    BSTNode.new(array.first).tap do |tree|
+    BinarySearchTree.new(array.first).tap do |tree|
       array.each { |val| tree.insert(val) }
     end
   end
@@ -23,12 +23,12 @@ class BSTNode
   def left_rotate
     #      A                B
     #     / \              / \
-    #    D   B      <=>   A'  C
+    #    D   B     <=>    A'  C
     #       / \          / \
     #      E   C        D   E
     #
 
-    new_left = BSTNode.new(value)   # A'
+    new_left = BinarySearchTree.new(value)   # A'
 
     new_left.left = left            # A' -> D
     left.parent = new_left          # D  <- A'
@@ -43,7 +43,7 @@ class BSTNode
   end
 
   def right_rotate
-    new_right = BSTNode.new(value)
+    new_right = BinarySearchTree.new(value)
 
     new_right.right = right
     right.parent = new_right
@@ -90,6 +90,7 @@ class BSTNode
   end
 
   def update_depth_and_balance
+    # recursively update depth and balance, rebalances if needed and crawls up the tree
     recalculate_depth_and_balance
     rebalance if ([-2, 2].include?(@balance))
     # p "RECALULATED #{self.inspect} DEPTH = #{depth}: BALANCE = #{balance}"
@@ -102,7 +103,7 @@ class BSTNode
     if (left.class != EmptyNode)
       left.insert(val)
     else
-      new_node = BSTNode.new(val)
+      new_node = BinarySearchTree.new(val)
       self.left, new_node.parent = new_node, self
       new_node.update_depth_and_balance
     end
@@ -112,14 +113,13 @@ class BSTNode
     if (right.class != EmptyNode)
       right.insert(val)
     else
-      new_node = BSTNode.new(val)
+      new_node = BinarySearchTree.new(val)
       self.right, new_node.parent = new_node, self
       new_node.update_depth_and_balance
     end
   end
 
   def rebalance
-    # p "REBALANCING AT #{self.inspect}"
     if @balance == -2
       left.left_rotate if left.balance == 1
       right_rotate
@@ -167,28 +167,4 @@ class EmptyNode
   end
 end
 
-test_array = []
-5000.times { test_array << (rand 5000) }
-
-tree = BSTNode.new(test_array.first)
-test_array.each { |v| tree.insert(v) }
-test_hash = Hash[test_array.map { |x| [x, true] }]
-
-Benchmark.bm do |benchmark|
-  benchmark.report("test_array include" ) { (1..5000).each { |n| test_array.include? n } }
-  benchmark.report("binary tree serach")  { (1..5000).each { |n| tree.include? n } } 
-  benchmark.report("test_hash lookup ")   { (1..5000).each { |n| test_hash.has_key? n }}
-end
-
-# tree = BSTNode.new(test_array.first)
-# test_array.each do |v|
-#   count += 1
-#   p count
-#   p "#{v}" 
-#   tree.insert(v)
-#   # p "TREE = #{tree.inspect}"
-#   p "DEPTH = #{tree.depth}"
-#   p "BALANCE = #{tree.balance}"
-# end
-# p "TREE = #{tree.inspect}"
 

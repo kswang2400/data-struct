@@ -252,14 +252,14 @@ Shifts from the front
 
 NOTHING HERE TO SEE :)
 
-### 2.3 Binary Search Tree
+### 2.3 Binary Search Tree (self balancing)
 
 #### #initialize 
 
 initialize with your root node
 
 ```ruby
-  tree = BSTNode.new(10)
+  tree = BinarySearchTree.new(10)
   =>  { 10 : {} | {} } 
 ```
 
@@ -268,7 +268,7 @@ initialize with your root node
 class method to initialize tree from an array
 
 ```ruby
-  tree = BSTNode.from_array([1, 5, 2, 6, 8, 10, 3])
+  tree = BinarySearchTree.from_array([1, 5, 2, 6, 8, 10, 3])
   =>  { 6 :  
         { 2 :  
           { 1 : {} | {} }  |  { 5 :  
@@ -286,7 +286,7 @@ class method to initialize tree from an array
 inserts the value in the correct position, then rebalances
 
 ```ruby
-  tree = BSTNode.new(10)
+  tree = BinarySearchTree.new(10)
   tree.insert(15)
   =>  { 10 : {} |  { 15 : {} | {} }  } 
   tree.insert(13)
@@ -298,7 +298,7 @@ inserts the value in the correct position, then rebalances
 checks tree for presence of value
 
 ```ruby
-  tree = BSTNode.new(10)
+  tree = BinarySearchTree.new(10)
   tree.insert(15)
   tree.include?(15)
   => true
@@ -311,7 +311,7 @@ checks tree for presence of value
 returns the tree in sorted array form
 
 ```ruby
-  tree = BSTNode.from_array([10, 5, 7, 15, 12, 0])
+  tree = BinarySearchTree.from_array([10, 5, 7, 15, 12, 0])
   =>  { 7 :  { 5 :  { 0 : {} | {} }  | {} }  |  { 12 :  { 10 : {} | {} }  |  { 15 : {} | {} }  }  }
   tree.to_a
   => [0, 5, 7, 10, 12, 15]
@@ -323,7 +323,7 @@ returns the tree in sorted array form
   test_array = []
   5000.times { test_array << (rand 5000) }
 
-  tree = BSTNode.new(test_array.first)
+  tree = BinarySearchTree.new(test_array.first)
   test_array.each { |v| tree.insert(v) }
   test_hash = Hash[test_array.map { |x| [x, true] }]
 
@@ -335,7 +335,7 @@ returns the tree in sorted array form
 
                         user     system      total        real
   test_array include  0.880000   0.010000   0.890000 (  0.895702)
-  binary tree serach  0.010000   0.000000   0.010000 (  0.012694)
+  binary tree search  0.010000   0.000000   0.010000 (  0.012694)
   test_hash lookup    0.000000   0.000000   0.000000 (  0.001391)
 
   80x faster than Ruby array, 10x slower than Ruby hash
