@@ -1,8 +1,8 @@
 require "binary_search_tree"
 
-RSpec.describe BSTNode do
+RSpec.describe BinarySearchTree do
   before :each do
-    @root = BSTNode.new(10)
+    @root = BinarySearchTree.new(10)
   end
 
   describe "#initiailize" do
@@ -18,7 +18,7 @@ RSpec.describe BSTNode do
 
   describe ".from_array" do
     it "should be able to convert an array to a tree" do
-      tree = BSTNode.from_array([1, 5, 2, 6, 8, 10, 3])
+      tree = BinarySearchTree.from_array([1, 5, 2, 6, 8, 10, 3])
       expect(tree.value).to eq 6
       expect(tree.left.value).to eq 2
       expect(tree.right.value).to eq 8
