@@ -216,9 +216,23 @@ Initialize an empty Linked List object with a sentinel Link
 ```
 #### #push
 
-Pushes onto the end
+Pushes onto the end of the list (inner most nested pointer)
 
-NOTHING HERE TO SEE :)
+```ruby
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  => #<SinglyLinkedList:0x007fd349bc2220
+      @sentinel=
+      #<SinglyLink:0x007fd349bc21f8 @next=
+        #<SinglyLink:0x007fd349087b30 @next=
+          #<SinglyLink:0x007fd3490b2ce0 @next=
+            #<SinglyLink:0x007fd3490cbdf8 @next=nil, 
+            @val=3>, 
+          @val=2>,
+        @val=1>,
+      @val=nil>>
+```
 
 #### #pop
 
@@ -250,7 +264,23 @@ Shifts from the front
 
 #### #unshift
 
-NOTHING HERE TO SEE :)
+unshifts to the front of the list and is attached to the sentinel (outer most pointer)
+
+```ruby
+  linked_list.unshift(10)
+  linked_list.unshift(20)
+  linked_list.unshift(30)
+  => #<SinglyLinkedList:0x007fd34a551b38
+      @sentinel=
+      #<SinglyLink:0x007fd34a551b10 @next=
+        #<SinglyLink:0x007fd349bdab18 @next=
+          #<SinglyLink:0x007fd34910da28 @next=
+            #<SinglyLink:0x007fd348a0e880 @next=nil, 
+            @val=10>, 
+          @val=20>, 
+        @val=30>,
+      @val=nil>>
+```
 
 ### 2.3 Binary Search Tree (self balancing)
 
