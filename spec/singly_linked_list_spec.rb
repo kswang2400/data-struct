@@ -11,7 +11,7 @@ RSpec.describe SinglyLinkedList do
     end 
 
     it "initializes with sentinel link" do
-      expect(@linked_list.sentinel.class).to be SingleLink
+      expect(@linked_list.sentinel.class).to be SinglyLink
     end
   end
 

@@ -16,8 +16,13 @@ Data Structures
 - [ ] \(doubly\) LinkedList
 - [ ] LRUCache
 - [ ] HashMap
+<<<<<<< HEAD
 - [x] Heap
 - [ ] BinarySearchTree
+=======
+- [ ] Heap
+- [x] BinarySearchTree
+>>>>>>> upstream/master
 
 http://www.rubydoc.info/github/kswang2400/data-struct/
 
@@ -47,16 +52,73 @@ Class names correspond with list above. Methods detailed below
 
 ## Contents
 
+<<<<<<< HEAD
 * [1. Data Structures](#1-data-structures)
   * [1.1 Dynamic Array](#11-dynamic-array)
   * [1.2 Singly Linked List](#12-singly-linked-list)
   * [1.3 Max Stack](#13-max-stack)
   * [1.4 Binary Heap](#14-bin-heap)
+=======
+* [1. Abstract Data Type](#1-abstract-data-type)
+  * [1.1 Max Stack](#11-max-stack)
+* [2. Data Structures](#2-data-structures)
+  * [2.1 Dynamic Array](#21-dynamic-array)
+  * [2.2 Singly Linked List](#22-singly-linked-list)
+  * [2.3 Binary Search Tree](#23-binary-search-tree-self-balancing)
+>>>>>>> upstream/master
 * [Contact](#contact)
 * [Contributing](#contributing)
 * [License](#license)
 
-### 1.1 Dynamic Array
+### 1.1 Max Stack
+
+#### #initialize
+
+Initialize your max stack.
+
+```ruby
+  max_stack = DataStruct::MaxStack.new
+  => #<MaxStack:0x007f86c8a04c80 @store=[]>
+```
+
+#### #push(val)
+
+Pushes the value onto the end of the stack
+
+```ruby
+  max_stack.store
+  => []
+  max_stack.push(5)
+  => [[5, 5]]
+  max_stack.store
+  => [[5, 5]]
+```
+
+#### #pop
+
+Pops the last element in the stack
+
+```ruby
+  max_stack.store
+  => [[5, 5]]
+  max_stack.pop
+  => 5
+  max_stack.store
+  => []
+```
+
+#### #max
+
+Returns in the max value in O(1) time.
+
+```ruby
+  max_stack.store
+  => [[5, 5], [2, 5], [6, 6], [7, 7]]
+  max_stack.max
+  => 7
+```
+
+### 2.1 Dynamic Array
 
 #### #initialize
 
@@ -155,6 +217,7 @@ Ring buffer still in effect
   => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
 ```
 
+<<<<<<< HEAD
 ### 1.2 Singly Linked List
 
 #### #initialize
@@ -204,51 +267,178 @@ Shifts from the front
 NOTHING HERE TO SEE :)
 
 ### 1.3 Max Stack
+=======
+### 2.2 Singly Linked List
+>>>>>>> upstream/master
 
 #### #initialize
 
-Initialize your max stack.
+Initialize an empty Linked List object with a sentinel Link
 
 ```ruby
+<<<<<<< HEAD
   max_stack = DataStruct::MaxStack.new
   => #<MaxStack:0x007f86c8a04c80 @store=[]>
+=======
+  linked_list = DataStruct::SinglyLinkedList.new
+  => #<SinglyLinkedList:0x007fabbb1af5b8 @sentinel=#<SinglyLink:0x007fabbb1af590 @next=nil, @val=nil>>
+>>>>>>> upstream/master
 ```
+#### #push
 
-#### #push(val)
-
-Pushes the value onto the end of the stack
+Pushes onto the end of the list (inner most nested pointer)
 
 ```ruby
-  max_stack.store
-  => []
-  max_stack.push(5)
-  => [[5, 5]]
-  max_stack.store
-  => [[5, 5]]
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  => #<SinglyLinkedList:0x007fd349bc2220
+      @sentinel=
+      #<SinglyLink:0x007fd349bc21f8 @next=
+        #<SinglyLink:0x007fd349087b30 @next=
+          #<SinglyLink:0x007fd3490b2ce0 @next=
+            #<SinglyLink:0x007fd3490cbdf8 @next=nil, 
+            @val=3>, 
+          @val=2>,
+        @val=1>,
+      @val=nil>>
 ```
 
 #### #pop
 
-Pops the last element in the stack
+Pops from the end
 
 ```ruby
-  max_stack.store
-  => [[5, 5]]
-  max_stack.pop
-  => 5
-  max_stack.store
-  => []
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  linked_list.pop
+  => 3
+  linked_list.pop
+  => 2
 ```
 
-#### #max
+#### #shift
 
-Returns in the max value in O(1) time.
+Shifts from the front
 
 ```ruby
-  max_stack.store
-  => [[5, 5], [2, 5], [6, 6], [7, 7]]
-  max_stack.max
-  => 7
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  linked_list.shift
+  => 1
+  linked_list.shift
+  => 2
+```
+
+#### #unshift
+
+unshifts to the front of the list and is attached to the sentinel (outer most pointer)
+
+```ruby
+  linked_list.unshift(10)
+  linked_list.unshift(20)
+  linked_list.unshift(30)
+  => #<SinglyLinkedList:0x007fd34a551b38
+      @sentinel=
+      #<SinglyLink:0x007fd34a551b10 @next=
+        #<SinglyLink:0x007fd349bdab18 @next=
+          #<SinglyLink:0x007fd34910da28 @next=
+            #<SinglyLink:0x007fd348a0e880 @next=nil, 
+            @val=10>, 
+          @val=20>, 
+        @val=30>,
+      @val=nil>>
+```
+
+### 2.3 Binary Search Tree (self balancing)
+
+#### #initialize 
+
+initialize with your root node
+
+```ruby
+  tree = BinarySearchTree.new(10)
+  =>  { 10 : {} | {} } 
+```
+
+#### .from_array
+
+class method to initialize tree from an array
+
+```ruby
+  tree = BinarySearchTree.from_array([1, 5, 2, 6, 8, 10, 3])
+  =>  { 6 :  
+        { 2 :  
+          { 1 : {} | {} }  |  { 5 :  
+                        { 3 : {} | {} }  | {} 
+                                }  
+        }  |  
+        { 8 : {} |  
+          { 10 : {} | {} }  
+        }  
+      }
+```
+
+#### #insert(val)
+
+inserts the value in the correct position, then rebalances
+
+```ruby
+  tree = BinarySearchTree.new(10)
+  tree.insert(15)
+  =>  { 10 : {} |  { 15 : {} | {} }  } 
+  tree.insert(13)
+  =>  { 13 :  { 10 : {} | {} }  |  { 15 : {} | {} }  } 
+```
+
+#### #include?(val)
+
+checks tree for presence of value
+
+```ruby
+  tree = BinarySearchTree.new(10)
+  tree.insert(15)
+  tree.include?(15)
+  => true
+  tree.include?(14)
+  => false
+```
+
+#### #to_a
+
+returns the tree in sorted array form
+
+```ruby
+  tree = BinarySearchTree.from_array([10, 5, 7, 15, 12, 0])
+  =>  { 7 :  { 5 :  { 0 : {} | {} }  | {} }  |  { 12 :  { 10 : {} | {} }  |  { 15 : {} | {} }  }  }
+  tree.to_a
+  => [0, 5, 7, 10, 12, 15]
+```
+
+#### benchmark testing
+
+```ruby
+  test_array = []
+  5000.times { test_array << (rand 5000) }
+
+  tree = BinarySearchTree.new(test_array.first)
+  test_array.each { |v| tree.insert(v) }
+  test_hash = Hash[test_array.map { |x| [x, true] }]
+
+  Benchmark.bm do |benchmark|
+    benchmark.report("test_array include" ) { (1..5000).each { |n| test_array.include? n } }
+    benchmark.report("binary tree serach")  { (1..5000).each { |n| tree.include? n } } 
+    benchmark.report("test_hash lookup ")   { (1..5000).each { |n| test_hash.has_key? n }}
+  end
+
+                        user     system      total        real
+  test_array include  0.880000   0.010000   0.890000 (  0.895702)
+  binary tree search  0.010000   0.000000   0.010000 (  0.012694)
+  test_hash lookup    0.000000   0.000000   0.000000 (  0.001391)
+
+  80x faster than Ruby array, 10x slower than Ruby hash
 ```
 ### 1.4 Binary Heap
 

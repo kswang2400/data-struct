@@ -1,8 +1,14 @@
 require "singly_linked_list"
 
+<<<<<<< HEAD
 RSpec.describe SingleLink do 
   before :each do
     @link = SingleLink.new(2)
+=======
+RSpec.describe SinglyLink do 
+  before :each do
+    @link = SinglyLink.new(2)
+>>>>>>> upstream/master
   end
 
   describe "initialize" do 
