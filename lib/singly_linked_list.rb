@@ -3,7 +3,7 @@ class SinglyLinkedList
   attr_reader :sentinel
 
   def initialize
-    @sentinel = SingleLink.new(nil)
+    @sentinel = SinglyLink.new(nil)
   end
 
   def pop
@@ -15,7 +15,7 @@ class SinglyLinkedList
   end
 
   def push(val)
-    link = SingleLink.new(val)
+    link = SinglyLink.new(val)
     _, last_link = walkthrough
     last_link.next = link
 
@@ -32,7 +32,7 @@ class SinglyLinkedList
   end
 
   def unshift(val)
-    link = SingleLink.new(val)
+    link = SinglyLink.new(val)
     @sentinel.next, link.next = link, @sentinel.next
     
     self
@@ -52,7 +52,7 @@ class SinglyLinkedList
   end
 end
 
-class SingleLink
+class SinglyLink
   attr_accessor :next, :val
 
   def initialize(val)
