@@ -28,7 +28,7 @@ RSpec.describe BSTNode do
   describe "#inspect" do
     it "should make it easier to read tree in terminal" do
       printed_tree = @root.inspect
-      expect(printed_tree).to eq " { 10 : { } | { } } "
+      expect(printed_tree).to eq " { 10 : {} | {} } "
     end
   end
 
@@ -104,7 +104,7 @@ RSpec.describe BSTNode do
 
   describe ".update_depth" do
     it "should initialize with depth 1" do
-      expect(@root.depth).to eq 1
+      expect(@root.depth).to eq 0
     end
 
     it "should update parent's depth" do

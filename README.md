@@ -47,16 +47,65 @@ Class names correspond with list above. Methods detailed below
 
 ## Contents
 
-* [1. Data Structures](#1-data-structures)
-  * [1.1 Dynamic Array](#11-dynamic-array)
-  * [1.2 Singly Linked List](#12-singly-linked-list)
-  * [1.3 Max Stack](#13-max-stack)
-  * [1.4 Binary Search Tree](#14-binary-search-tree)
+* [1. Abstract Data Type](#1-abstract-data-type)
+  * [1.1 Max Stack](#11-max-stack)
+* [2. Data Structures](#2-data-structures)
+  * [2.1 Dynamic Array](#21-dynamic-array)
+  * [2.2 Singly Linked List](#22-singly-linked-list)
+  * [2.3 Binary Search Tree](#23-binary-search-tree)
 * [Contact](#contact)
 * [Contributing](#contributing)
 * [License](#license)
 
-### 1.1 Dynamic Array
+### 1.1 Max Stack
+
+#### #initialize
+
+Initialize your max stack.
+
+```ruby
+  max_stack = DataStruct::MaxStack.new
+  => #<MaxStack:0x007f86c8a04c80 @store=[]>
+```
+
+#### #push(val)
+
+Pushes the value onto the end of the stack
+
+```ruby
+  max_stack.store
+  => []
+  max_stack.push(5)
+  => [[5, 5]]
+  max_stack.store
+  => [[5, 5]]
+```
+
+#### #pop
+
+Pops the last element in the stack
+
+```ruby
+  max_stack.store
+  => [[5, 5]]
+  max_stack.pop
+  => 5
+  max_stack.store
+  => []
+```
+
+#### #max
+
+Returns in the max value in O(1) time.
+
+```ruby
+  max_stack.store
+  => [[5, 5], [2, 5], [6, 6], [7, 7]]
+  max_stack.max
+  => 7
+```
+
+### 2.1 Dynamic Array
 
 #### #initialize
 
@@ -155,7 +204,7 @@ Ring buffer still in effect
   => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
 ```
 
-### 1.2 Singly Linked List
+### 2.2 Singly Linked List
 
 #### #initialize
 
@@ -203,55 +252,7 @@ Shifts from the front
 
 NOTHING HERE TO SEE :)
 
-### 1.3 Max Stack
-
-#### #initialize
-
-Initialize your max stack.
-
-```ruby
-  max_stack = DataStruct::MaxStack.new
-  => #<MaxStack:0x007f86c8a04c80 @store=[]>
-```
-
-#### #push(val)
-
-Pushes the value onto the end of the stack
-
-```ruby
-  max_stack.store
-  => []
-  max_stack.push(5)
-  => [[5, 5]]
-  max_stack.store
-  => [[5, 5]]
-```
-
-#### #pop
-
-Pops the last element in the stack
-
-```ruby
-  max_stack.store
-  => [[5, 5]]
-  max_stack.pop
-  => 5
-  max_stack.store
-  => []
-```
-
-#### #max
-
-Returns in the max value in O(1) time.
-
-```ruby
-  max_stack.store
-  => [[5, 5], [2, 5], [6, 6], [7, 7]]
-  max_stack.max
-  => 7
-```
-
-### 1.4 Binary Search Tree
+### 2.3 Binary Search Tree
 
 #### #initialize 
 
@@ -332,10 +333,12 @@ returns the tree in sorted array form
     benchmark.report("test_hash lookup ")   { (1..5000).each { |n| test_hash.has_key? n }}
   end
 
-                      user     system      total        real
-  test_array include  0.680000   0.000000   0.680000 (  0.682606)
-  binary tree serach  0.010000   0.000000   0.010000 (  0.008562)
-  test_hash lookup    0.000000   0.000000   0.000000 (  0.001221)
+                        user     system      total        real
+  test_array include  0.880000   0.010000   0.890000 (  0.895702)
+  binary tree serach  0.010000   0.000000   0.010000 (  0.012694)
+  test_hash lookup    0.000000   0.000000   0.000000 (  0.001391)
+
+  80x faster than Ruby array, 10x slower than Ruby hash
 ```
 
 ##Contact

@@ -1,4 +1,6 @@
 
+require "benchmark"
+
 class BSTNode
   attr_reader :value
   attr_accessor :parent, :left, :right, :depth, :balance
@@ -29,13 +31,13 @@ class BSTNode
     new_left = BSTNode.new(value)   # A'
 
     new_left.left = left            # A' -> D
-    left.parent = new_left
+    left.parent = new_left          # D  <- A'
     new_left.right = right.left     # A' -> E
-    right.left.parent = new_left
-    new_left.parent = self          # A' -> A
+    right.left.parent = new_left    # E  <- A'
+    new_left.parent = self          # A' <- A
 
     new_right = right.right         # C
-    new_right.parent = self       # C -> A
+    new_right.parent = self         # C <- A
     
     @value, @left, @right = right.value, new_left, new_right
   end
@@ -66,7 +68,7 @@ class BSTNode
   end
 
   def inspect
-    " { #{value}, DEPTH: #{depth}, BALANCE: #{balance} : #{left.inspect} | #{right.inspect} } "
+    " { #{value} : #{left.inspect} | #{right.inspect} } "
   end
 
   def include?(val)
@@ -165,43 +167,28 @@ class EmptyNode
   end
 end
 
-# test_array = [1351, 968, 979]
-# test_array = []
-# 100.times { test_array << (rand 5000) }
-count = 0
-
-test_array = [
-  173,
-  2735,
-  4973,
-  2403,
-  4789,
-  1044,
-  106,
-  489,
-  179,
-  2387,
-  1079,
-  441,
-  4387,
-  227,
-  641,
-  1306,
-  3219,
-  2787,
-  3195,
-  1087
-]
+test_array = []
+5000.times { test_array << (rand 5000) }
 
 tree = BSTNode.new(test_array.first)
-test_array.each do |v|
-  count += 1
-  p count
-  p "#{v}" 
-  tree.insert(v)
-  # p "TREE = #{tree.inspect}"
-  p "DEPTH = #{tree.depth}"
-  p "BALANCE = #{tree.balance}"
+test_array.each { |v| tree.insert(v) }
+test_hash = Hash[test_array.map { |x| [x, true] }]
+
+Benchmark.bm do |benchmark|
+  benchmark.report("test_array include" ) { (1..5000).each { |n| test_array.include? n } }
+  benchmark.report("binary tree serach")  { (1..5000).each { |n| tree.include? n } } 
+  benchmark.report("test_hash lookup ")   { (1..5000).each { |n| test_hash.has_key? n }}
 end
-p "TREE = #{tree.inspect}"
+
+# tree = BSTNode.new(test_array.first)
+# test_array.each do |v|
+#   count += 1
+#   p count
+#   p "#{v}" 
+#   tree.insert(v)
+#   # p "TREE = #{tree.inspect}"
+#   p "DEPTH = #{tree.depth}"
+#   p "BALANCE = #{tree.balance}"
+# end
+# p "TREE = #{tree.inspect}"
 
