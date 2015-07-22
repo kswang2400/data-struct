@@ -20,10 +20,10 @@ class BSTNode
 
   def left_rotate
     new_left = BSTNode.new(value)
+
     new_left.left = left
-    p self
-    new_left.right = right.left || EmptyNode.new
-    new_left.parent = self
+    new_left.right = right.left
+    new_left.parent = right
 
     new_right = right.right
     
@@ -34,8 +34,8 @@ class BSTNode
     new_right = BSTNode.new(value)
 
     new_right.right = right
-    new_right.left = left.right || EmptyNode.new
-    new_right.parent = self
+    new_right.left = left.right
+    new_right.parent = left
 
     new_left = left.left
     # new_right.left, new_right.right, new_right.parent = left.right, right, self
@@ -51,14 +51,11 @@ class BSTNode
     when 0 then false
     end
 
-    deepest = self.traverse_down
-    deepest.update_depth_and_balance
-    
     self
   end
 
   def inspect
-    " { #{value} : #{left.inspect} | #{right.inspect} } "
+    " { #{value}, DEPTH: #{depth}, BALANCE: #{balance} : #{left.inspect} | #{right.inspect} } "
   end
 
   def include?(val)
@@ -73,17 +70,29 @@ class BSTNode
     left.to_a + [value] + right.to_a
   end
 
-  def update_depth_and_balance
-    recalculate_depth_and_balance
-    rebalance if ([-2, 2].include?(@balance))
-    recalculate_depth_and_balance
-    @parent.update_depth_and_balance
+  def recalculate_depth_and_balance
+    @depth = ([left.depth, right.depth].max + 1)
+    @balance = right.depth - left.depth
+    parent.recalculate_depth_and_balance if parent.class != EmptyNode
+  end
+  
+  def traverse_down
+    # returns array of all depth 1 children
+    return [self] if depth == 1
+    left.traverse_down + right.traverse_down
   end
 
-  def traverse_down
-    return self if depth == 1
-    deeper = (left.depth > right.depth) ? left : right
-    deeper.traverse_down
+  def traverse_up
+    # returns root 
+    return self if parent.kind_of? EmptyNode
+    parent.traverse_up
+  end
+
+  def update_depth_and_balance
+    # recalculate_depth_and_balance
+    rebalance if ([-2, 2].include?(@balance))
+    # recalculate_depth_and_balance
+    parent.update_depth_and_balance
   end
 
   private
@@ -94,7 +103,20 @@ class BSTNode
     else
       new_node = BSTNode.new(val)
       self.left, new_node.parent = new_node, self
+      new_node.recalculate_depth_and_balance
       new_node.update_depth_and_balance
+
+
+      # root = self.traverse_up
+      # p "ROOT = #{root.inspect}"
+      # deepest = root.traverse_down
+
+      # p "DEEPEST = #{deepest}"
+
+      # deepest.each do |node|
+        # p "NODE = #{node.inspect}"
+        # node.update_depth_and_balance
+      # end
     end
   end
 
@@ -104,7 +126,18 @@ class BSTNode
     else
       new_node = BSTNode.new(val)
       self.right, new_node.parent = new_node, self
+      new_node.recalculate_depth_and_balance
       new_node.update_depth_and_balance
+      
+      # root = self.traverse_up
+      # deepest = root.traverse_down
+
+      # # p "DEEPEST = #{deepest}"
+
+      # deepest.each do |node|
+      #   # p "NODE = #{node.inspect}"
+      #   node.update_depth_and_balance
+      # end
     end
   end
 
@@ -116,11 +149,6 @@ class BSTNode
       right.right_rotate if right.balance == -1
       left_rotate
     end
-  end
-
-  def recalculate_depth_and_balance
-    @depth = ([left.depth, right.depth].max + 1)
-    @balance = right.depth - left.depth
   end
 end
 
@@ -145,7 +173,15 @@ class EmptyNode
     "{ }"
   end
 
+  def recalculate_depth_and_balance
+    true
+  end
+
   def to_a
+    []
+  end
+
+  def traverse_down
     []
   end
 
@@ -155,12 +191,19 @@ class EmptyNode
 end
 
 test_array = []
-5000.times { test_array << (rand 5000) }
+100.times { test_array << (rand 5000) }
+count = 0
 
 tree = BSTNode.new(test_array.first)
-test_array.each do |v| 
-  p "V = #{v}"
-  p "TREE = #{tree.inspect}"
+test_array.each do |v|
+  count += 1
+  # puts "\n\n"
+  # p "OLD TREE = #{tree.inspect}"
+  p "#{v}" 
   tree.insert(v)
+  p "TREE = #{tree.inspect}"
+  # p "DEPTH = #{tree.depth}"
+  # p "BALANCE = #{tree.balance}"
+  # p count
 end
 
