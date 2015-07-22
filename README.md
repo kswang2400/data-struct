@@ -212,7 +212,7 @@ Initialize an empty Linked List object with a sentinel Link
 
 ```ruby
   linked_list = DataStruct::SinglyLinkedList.new
-  => #<SingleLinkedList:0x007fabbb1af5b8 @sentinel=#<SingleLink:0x007fabbb1af590 @next=nil, @val=nil>>
+  => #<SinglyLinkedList:0x007fabbb1af5b8 @sentinel=#<SinglyLink:0x007fabbb1af590 @next=nil, @val=nil>>
 ```
 #### #push
 

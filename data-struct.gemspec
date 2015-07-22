@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
                     "lib/dynamic_array.rb", 
                     "lib/max_stack.rb", 
                     "lib/min_max_stack.rb", 
-                    "lib/single_linked_list.rb", 
+                    "lib/Singly_linked_list.rb", 
                     "lib/stack_queue.rb"
                   ]
   s.homepage    =
