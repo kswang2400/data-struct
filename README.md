@@ -518,6 +518,7 @@ In Ruby, since division of two integers are rounded down to the nearest integer,
 
 ##Contact
 
+* [Aaron Hong](https://github.com/gnoha)
 * [Karen Ling](https://github.com/karenling)
 * [Daniel Ng](https://github.com/danielng09)
 * [Conan Tzou](https://github.com/conanza)
