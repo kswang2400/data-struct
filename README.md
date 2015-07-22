@@ -52,7 +52,7 @@ Class names correspond with list above. Methods detailed below
 * [2. Data Structures](#2-data-structures)
   * [2.1 Dynamic Array](#21-dynamic-array)
   * [2.2 Singly Linked List](#22-singly-linked-list)
-  * [2.3 Binary Search Tree](#23-binary-search-tree)
+  * [2.3 Binary Search Tree](#23-binary-search-tree-self-balancing)
 * [Contact](#contact)
 * [Contributing](#contributing)
 * [License](#license)
