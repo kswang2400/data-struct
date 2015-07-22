@@ -8,7 +8,7 @@ class BSTNode
     @parent = EmptyNode.new
     @left = EmptyNode.new
     @right = EmptyNode.new
-    @depth = 1
+    @depth = 0
     @balance = 0
   end
 
@@ -19,15 +19,23 @@ class BSTNode
   end
 
   def left_rotate
-    new_left = BSTNode.new(value)
+    #      A                B
+    #     / \              / \
+    #    D   B      <=>   A'  C
+    #       / \          / \
+    #      E   C        D   E
+    #
 
-    new_left.left = left
-    # (left && left.right) || EmptyNode.new
-    new_left.right = right.left
-    new_left.parent = self
+    new_left = BSTNode.new(value)   # A'
 
-    new_right = right.right
-    right.right.parent = self
+    new_left.left = left            # A' -> D
+    left.parent = new_left
+    new_left.right = right.left     # A' -> E
+    right.left.parent = new_left
+    new_left.parent = self          # A' -> A
+
+    new_right = right.right         # C
+    new_right.parent = self       # C -> A
     
     @value, @left, @right = right.value, new_left, new_right
   end
@@ -36,13 +44,13 @@ class BSTNode
     new_right = BSTNode.new(value)
 
     new_right.right = right
+    right.parent = new_right
     new_right.left = left.right
+    left.right.parent = new_right
     new_right.parent = self
 
     new_left = left.left
-    left.left.parent = self
-    # new_right.left, new_right.right, new_right.parent = left.right, right, self
-    # new_left, new_left.parent = left.left, self
+    new_left.parent = self
 
     @value, @left, @right = left.value, new_left, new_right
   end
@@ -76,11 +84,13 @@ class BSTNode
   def recalculate_depth_and_balance
     @depth = ([left.depth, right.depth].max + 1)
     @balance = right.depth - left.depth
+    # p "RECALULATED DEPTH = #{depth}: BALANCE = #{balance}"
   end
 
   def update_depth_and_balance
     recalculate_depth_and_balance
     rebalance if ([-2, 2].include?(@balance))
+    # p "RECALULATED #{self.inspect} DEPTH = #{depth}: BALANCE = #{balance}"
     parent.update_depth_and_balance
   end
 
@@ -107,6 +117,7 @@ class BSTNode
   end
 
   def rebalance
+    # p "REBALANCING AT #{self.inspect}"
     if @balance == -2
       left.left_rotate if left.balance == 1
       right_rotate
@@ -116,6 +127,7 @@ class BSTNode
     end
     right.recalculate_depth_and_balance
     left.recalculate_depth_and_balance
+    recalculate_depth_and_balance
   end
 end
 
@@ -137,7 +149,7 @@ class EmptyNode
   end
 
   def inspect
-    "{ }"
+    "{}"
   end
 
   def recalculate_depth_and_balance
@@ -153,42 +165,43 @@ class EmptyNode
   end
 end
 
-test_array = [173,]
-3000.times { test_array << (rand 5000) }
+# test_array = [1351, 968, 979]
+# test_array = []
+# 100.times { test_array << (rand 5000) }
 count = 0
 
-# test_array = [
-#   173,
-#   2735,
-#   4973,
-#   2403,
-#   4789,
-#   1044,
-#   106,
-#   489,
-#   179,
-#   2387,
-#   1079,
-#   441,
-#   4387,
-#   227,
-#   641,
-#   1306,
-#   3219,
-#   2787,
-#   3195,
-#   1087
-# ]
+test_array = [
+  173,
+  2735,
+  4973,
+  2403,
+  4789,
+  1044,
+  106,
+  489,
+  179,
+  2387,
+  1079,
+  441,
+  4387,
+  227,
+  641,
+  1306,
+  3219,
+  2787,
+  3195,
+  1087
+]
 
 tree = BSTNode.new(test_array.first)
 test_array.each do |v|
-  # puts "\n\n"
-  # p "OLD TREE = #{tree.inspect}"
+  count += 1
+  p count
   p "#{v}" 
   tree.insert(v)
-  p "TREE = #{tree.inspect}"
-  # p "DEPTH = #{tree.depth}"
-  # p "BALANCE = #{tree.balance}"
-  # p count
+  # p "TREE = #{tree.inspect}"
+  p "DEPTH = #{tree.depth}"
+  p "BALANCE = #{tree.balance}"
 end
+p "TREE = #{tree.inspect}"
 
