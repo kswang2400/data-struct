@@ -1,9 +1,6 @@
 
-require "benchmark"
-
 class BinarySearchTree
-  attr_reader :value
-  attr_accessor :parent, :left, :right, :depth, :balance
+  attr_accessor :value, :parent, :left, :right, :depth, :balance
 
   def initialize(value)
     @value = value
