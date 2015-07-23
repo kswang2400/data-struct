@@ -1,4 +1,3 @@
-
 class BinarySearchTree
   attr_accessor :value, :parent, :left, :right, :depth, :balance
 
@@ -163,5 +162,3 @@ class EmptyNode
     true
   end
 end
-
-
