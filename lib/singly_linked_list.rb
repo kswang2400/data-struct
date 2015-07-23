@@ -1,9 +1,9 @@
 # singly linked list
-class SingleLinkedList
+class SinglyLinkedList
   attr_reader :sentinel
 
   def initialize
-    @sentinel = SingleLink.new(nil)
+    @sentinel = SinglyLink.new(nil)
   end
 
   def pop
@@ -15,7 +15,7 @@ class SingleLinkedList
   end
 
   def push(val)
-    link = SingleLink.new(val)
+    link = SinglyLink.new(val)
     _, last_link = walkthrough
     last_link.next = link
 
@@ -24,7 +24,7 @@ class SingleLinkedList
 
   def shift
     first_link = @sentinel.next
-    raise "cannot shift from empty list" if prev.nil?
+    raise "cannot shift from empty list" if first_link.nil?
     val = first_link.val
     @sentinel.next = first_link.next
 
@@ -32,7 +32,7 @@ class SingleLinkedList
   end
 
   def unshift(val)
-    link = SingleLink.new(val)
+    link = SinglyLink.new(val)
     @sentinel.next, link.next = link, @sentinel.next
     
     self
@@ -52,7 +52,7 @@ class SingleLinkedList
   end
 end
 
-class SingleLink
+class SinglyLink
   attr_accessor :next, :val
 
   def initialize(val)

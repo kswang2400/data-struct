@@ -1,17 +1,17 @@
 require "singly_linked_list"
 
-RSpec.describe SingleLinkedList do
+RSpec.describe SinglyLinkedList do
   before :each do 
-    @linked_list = SingleLinkedList.new
+    @linked_list = SinglyLinkedList.new
   end
 
   describe "initialize" do
     it "creates a Linked List" do
-      expect(@linked_list.class).to be SingleLinkedList
+      expect(@linked_list.class).to be SinglyLinkedList
     end 
 
     it "initializes with sentinel link" do
-      expect(@linked_list.sentinel.class).to be SingleLink
+      expect(@linked_list.sentinel.class).to be SinglyLink
     end
   end
 
