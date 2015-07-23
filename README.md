@@ -16,15 +16,8 @@ Data Structures
 - [ ] \(doubly\) LinkedList
 - [ ] LRUCache
 - [ ] HashMap
-<<<<<<< HEAD
 - [x] Heap
-- [ ] BinarySearchTree
-=======
-- [ ] Heap
 - [x] BinarySearchTree
->>>>>>> upstream/master
-
-http://www.rubydoc.info/github/kswang2400/data-struct/
 
 ##Usage
 
@@ -52,20 +45,13 @@ Class names correspond with list above. Methods detailed below
 
 ## Contents
 
-<<<<<<< HEAD
-* [1. Data Structures](#1-data-structures)
-  * [1.1 Dynamic Array](#11-dynamic-array)
-  * [1.2 Singly Linked List](#12-singly-linked-list)
-  * [1.3 Max Stack](#13-max-stack)
-  * [1.4 Binary Heap](#14-bin-heap)
-=======
 * [1. Abstract Data Type](#1-abstract-data-type)
   * [1.1 Max Stack](#11-max-stack)
 * [2. Data Structures](#2-data-structures)
   * [2.1 Dynamic Array](#21-dynamic-array)
   * [2.2 Singly Linked List](#22-singly-linked-list)
   * [2.3 Binary Search Tree](#23-binary-search-tree-self-balancing)
->>>>>>> upstream/master
+  * [2.4 Binary Heap](#14-bin-heap)
 * [Contact](#contact)
 * [Contributing](#contributing)
 * [License](#license)
@@ -217,7 +203,6 @@ Ring buffer still in effect
   => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
 ```
 
-<<<<<<< HEAD
 ### 1.2 Singly Linked List
 
 #### #initialize
