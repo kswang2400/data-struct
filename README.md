@@ -16,8 +16,15 @@ Data Structures
 - [ ] \(doubly\) LinkedList
 - [ ] LRUCache
 - [ ] HashMap
+<<<<<<< HEAD
 - [x] Heap
 - [x] BinarySearchTree
+=======
+- [ ] Heap
+- [x] BinarySearchTree
+
+http://www.rubydoc.info/github/kswang2400/data-struct/
+>>>>>>> readme-changes
 
 ##Usage
 
@@ -51,7 +58,10 @@ Class names correspond with list above. Methods detailed below
   * [2.1 Dynamic Array](#21-dynamic-array)
   * [2.2 Singly Linked List](#22-singly-linked-list)
   * [2.3 Binary Search Tree](#23-binary-search-tree-self-balancing)
+<<<<<<< HEAD
   * [2.4 Binary Heap](#14-bin-heap)
+=======
+>>>>>>> readme-changes
 * [Contact](#contact)
 * [Contributing](#contributing)
 * [License](#license)
@@ -203,6 +213,7 @@ Ring buffer still in effect
   => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
 ```
 
+<<<<<<< HEAD
 ### 1.2 Singly Linked List
 
 #### #initialize
@@ -253,21 +264,17 @@ NOTHING HERE TO SEE :)
 
 ### 1.3 Max Stack
 =======
+=======
+>>>>>>> readme-changes
 ### 2.2 Singly Linked List
->>>>>>> upstream/master
 
 #### #initialize
 
 Initialize an empty Linked List object with a sentinel Link
 
 ```ruby
-<<<<<<< HEAD
-  max_stack = DataStruct::MaxStack.new
-  => #<MaxStack:0x007f86c8a04c80 @store=[]>
-=======
   linked_list = DataStruct::SinglyLinkedList.new
   => #<SinglyLinkedList:0x007fabbb1af5b8 @sentinel=#<SinglyLink:0x007fabbb1af590 @next=nil, @val=nil>>
->>>>>>> upstream/master
 ```
 #### #push
 
@@ -425,6 +432,7 @@ returns the tree in sorted array form
 
   80x faster than Ruby array, 10x slower than Ruby hash
 ```
+
 ### 1.4 Binary Heap
 
 #### #initialize(&prc)
@@ -508,7 +516,6 @@ In Ruby, since division of two integers are rounded down to the nearest integer,
 * [Daniel Ng](https://github.com/danielng09)
 * [Conan Tzou](https://github.com/conanza)
 * [Kevin Wang](https://github.com/kswang2400)
-* [Aaron Hong](https://github.com/gnoha)
 
 ##Contributing
 
