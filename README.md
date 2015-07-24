@@ -2,6 +2,10 @@
 
 A simple gem that provides several useful data structures.
 
+[![Gem Version](https://badge.fury.io/rb/data-struct.svg)](http://badge.fury.io/rb/data-struct)
+<a href="https://codeclimate.com/github/kswang2400/data-struct"><img src="https://codeclimate.com/github/kswang2400/data-struct/badges/gpa.svg" /></a>
+<a href="https://codeclimate.com/github/kswang2400/data-struct"><img src="https://codeclimate.com/github/kswang2400/data-struct/badges/gpa.svg" /></a>
+
 ##Usage
 
 Install the gem:
@@ -31,7 +35,7 @@ To use the gem, initialize a new object through the DataStruct module (optional)
   # same thing, DataStruct module not necessary
 ```
 
-Class names correspond with list below.
+Class names correspond with list below:
 
 Abstract Data Type          
 - [ ] Map                   
