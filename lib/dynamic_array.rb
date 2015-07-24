@@ -11,8 +11,8 @@ class DynamicArray
   end
 
   def empty?
-    # will refactor to check num_items because I'm not testing that variable right now
-    return @store.empty?
+    # not cheating by checking @store
+    return num_items == 0
   end
 
   def insert(val, idx)
@@ -38,6 +38,7 @@ class DynamicArray
 
   def pop
     # O(1)
+    raise "array is empty" if @num_items == 0
     @num_items -= 1
     idx = @start + @num_items
     val, @store[idx] = @store[idx], nil
@@ -74,6 +75,7 @@ class DynamicArray
 
   def shift
     # O(1)
+    raise "array is empty" if @num_items == 0
     val, @store[@start] = @store[@start], nil
     @num_items -= 1
     @start += 1

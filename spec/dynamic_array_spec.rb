@@ -24,6 +24,17 @@ RSpec.describe DynamicArray do
     end
   end
 
+  describe "#empty?" do
+    it "should return false if not empty" do
+      @dynamic_array.push(1)
+      expect(@dynamic_array.empty?).to be false
+    end
+
+    it "should return true if array is empty" do
+      expect(@dynamic_array.empty?).to be true
+    end
+  end
+
   context "push, pop, shift, unshift" do
     before :each do 
       @dynamic_array.push(1)
@@ -61,6 +72,11 @@ RSpec.describe DynamicArray do
         expect(@dynamic_array.size).to eq 10
         expect(@dynamic_array.start).to eq 0
       end
+
+      it "should raise an error if array is empty" do 
+        2.times { @dynamic_array.pop }
+        expect{ @dynamic_array.pop }.to raise_error(RuntimeError, "array is empty")
+      end
     end
 
     describe "#shift" do
@@ -78,6 +94,11 @@ RSpec.describe DynamicArray do
         expect(@dynamic_array.num_items).to eq 2
         expect(@dynamic_array.size).to eq 10
         expect(@dynamic_array.start).to eq 2
+      end
+
+      it "should raise an error if array is empty" do 
+        2.times { @dynamic_array.pop }
+        expect{ @dynamic_array.shift }.to raise_error(RuntimeError, "array is empty")
       end
     end
 
