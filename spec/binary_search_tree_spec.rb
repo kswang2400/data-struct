@@ -25,6 +25,14 @@ RSpec.describe BinarySearchTree do
     end
   end
 
+  describe "#left_rotate" do 
+    it "should left rotate" do 
+      @root.insert(15)
+      @root.left_rotate
+      p @root
+    end
+  end
+
   describe "#inspect" do
     it "should make it easier to read tree in terminal" do
       printed_tree = @root.inspect

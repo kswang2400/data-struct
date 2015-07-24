@@ -17,15 +17,14 @@ class BinarySearchTree
   end
 
   def left_rotate
+    #
     #      A                B
     #     / \              / \
-    #    D   B     <=>    A'  C
+    #    D   B     <=>    A   C
     #       / \          / \
     #      E   C        D   E
     #
-
-    # KW: still need to refactor this, unnecessary creation of new node
-    # reassign parent
+    
     new_left = BinarySearchTree.new(value)   # A'
 
     new_left.left = left            # A' -> D
