@@ -2,24 +2,6 @@
 
 A simple gem that provides several useful data structures including the following:
 
-Abstract Data Type
-- [ ] Map
-- [ ] Set
-- [x] MaxStack
-- [x] MinMaxStack
-- [ ] Queue
-
-Data Structures
-- [x] DynamicArray
-- [ ] HashMap
-- [x] SinglyLinkedList
-- [ ] \(doubly\) LinkedList
-- [ ] LRUCache
-- [ ] HashMap
-- [x] Heap
-- [x] BinarySearchTree
-
-
 ##Usage
 
 Install the gem:
@@ -34,15 +16,33 @@ Or require in Gemfile:
   gem 'data-struct'
 ```
 
-To use the gem, initialize a new object through the DataStruct module
+then run 
+
+```
+  bundle install
+```
+
+To use the gem, initialize a new object through the DataStruct module (optional).
 
 ```ruby
   linked_list = DataStruct::SinglyLinkedList.new
-  # default LinkedList class is doubly linked list; use SinglyLinkedList for singly linked list
-  dynamic_array = DataStruct::DynamicArray.new(10)
+  # default LinkedList class is doubly linked; use SinglyLinkedList for singly linked list
+  dynamic_array = DynamicArray.new(10)
+  # same thing, DataStruct module not necessary
 ```
 
-Class names correspond with list above. Methods detailed below
+Class names correspond with list below.
+
+Abstract Data Type          Data Structures
+- [ ] Map                   - [x] DynamicArray
+- [ ] Set                   - [ ] HashMap
+- [x] MaxStack              - [x] SinglyLinkedList
+- [x] MinMaxStack           - [ ] LinkedList
+- [ ] Queue                 - [ ] LRUCache
+                            - [ ] HashMap
+                            - [x] BinarySearchTree
+                            - [x] BinHeap
+
 
 ## Contents
 
@@ -52,7 +52,7 @@ Class names correspond with list above. Methods detailed below
   * [2.1 Dynamic Array](#21-dynamic-array)
   * [2.2 Singly Linked List](#22-singly-linked-list)
   * [2.3 Binary Search Tree](#23-binary-search-tree-self-balancing)
-  * [2.4 Binary Heap](#14-bin-heap)
+  * [2.4 Binary Heap](#24-bin-heap)
 * [Contact](#contact)
 * [Contributing](#contributing)
 * [License](#license)
@@ -204,7 +204,7 @@ Ring buffer still in effect
   => [101, 100, 2, 3, 4, 5, 6, 7, 8, 200]
 ```
 
-### 1.2 Singly Linked List
+### 2.2 Singly Linked List
 
 #### #initialize
 
@@ -218,7 +218,20 @@ Initialize an empty Linked List object with a sentinel Link
 
 Pushes onto the end
 
-NOTHING HERE TO SEE :)
+```ruby
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  => #<SinglyLinkedList:0x007fbe926c7c78 @sentinel=#
+      <SinglyLink:0x007fbe926c7c50 @next=#
+        <SinglyLink:0x007fbe9262fa90 @next=#
+          <SinglyLink:0x007fbe925c68d8 @next=#
+            <SinglyLink:0x007fbe91c57540 @next=nil, 
+            @val=3>, 
+          @val=2>, 
+        @val=1>,
+     @val=nil>>
+```
 
 #### #pop
 
@@ -250,9 +263,22 @@ Shifts from the front
 
 #### #unshift
 
-NOTHING HERE TO SEE :)
+Unshifts into the front of the list
 
-### 1.3 Max Stack
+```ruby
+  linked_list.unshift(10)
+  linked_list.unshift(20)
+  linked_list.unshift(30)
+  => #<SinglyLinkedList:0x007fbe9256e520 @sentinel=#
+      <SinglyLink:0x007fbe9256e5c0 @next=#
+        <SinglyLink:0x007fbe924594a0 @next=#
+          <SinglyLink:0x007fbe924ba868 @next=#
+            <SinglyLink:0x007fbe924ff5d0 @next=nil, 
+            @val=10>, 
+          @val=20>,
+        @val=30>,
+     @val=nil>>
+```
 
 ### 2.2 Singly Linked List
 
@@ -264,6 +290,21 @@ Initialize an empty Linked List object with a sentinel Link
   linked_list = DataStruct::SinglyLinkedList.new
   => #<SinglyLinkedList:0x007fabbb1af5b8 @sentinel=#<SinglyLink:0x007fabbb1af590 @next=nil, @val=nil>>
 ```
+
+#### #pop
+
+Pops from the end and returns the value
+
+```ruby
+  linked_list.push(1)
+  linked_list.push(2)
+  linked_list.push(3)
+  linked_list.pop
+  => 3
+  linked_list.pop
+  => 2
+```
+
 #### #push
 
 Pushes onto the end of the list (inner most nested pointer)
@@ -284,23 +325,9 @@ Pushes onto the end of the list (inner most nested pointer)
       @val=nil>>
 ```
 
-#### #pop
-
-Pops from the end
-
-```ruby
-  linked_list.push(1)
-  linked_list.push(2)
-  linked_list.push(3)
-  linked_list.pop
-  => 3
-  linked_list.pop
-  => 2
-```
-
 #### #shift
 
-Shifts from the front
+Shifts from the front and returns the value
 
 ```ruby
   linked_list.push(1)
@@ -343,7 +370,11 @@ initialize with your root node
   =>  { 10 : {} | {} } 
 ```
 
-#### .from_array
+#### #children
+
+// deprecated //
+
+#### ::from_array
 
 class method to initialize tree from an array
 
@@ -490,8 +521,6 @@ Due to the nature of a binary heap being a full tree, we can find children indic
 #### ::find_parent(child_idx)
 
 Similary to ::find_children, we can find a child's parent by solving for parent_idx. 
-
-In Ruby, since division of two integers are rounded down to the nearest integer, unles specified, we do not have to solve for the case of a child being the left child or the right child:
 
 ```ruby
   parent_idx = (child_idx - 1) / 2

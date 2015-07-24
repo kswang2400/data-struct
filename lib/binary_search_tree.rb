@@ -16,14 +16,6 @@ class BinarySearchTree
     end
   end
 
-  def children
-    count = 0
-    count += 1 if left.class == BinarySearchTree
-    count += 1 if right.class == BinarySearchTree
-
-    count
-  end
-
   def left_rotate
     #      A                B
     #     / \              / \
