@@ -1,6 +1,6 @@
-# Data Structures
+# data-struct
 
-A simple gem that provides several useful data structures.
+A simple gem that provides several useful data structures in Ruby.
 
 [![Gem Version](https://badge.fury.io/rb/data-struct.svg)](http://badge.fury.io/rb/data-struct)
 [![Build Status](https://travis-ci.org/kswang2400/data-struct.svg?branch=master)](https://travis-ci.org/kswang2400/data-struct)
@@ -31,6 +31,9 @@ then run
 To use the gem, initialize a new object through the DataStruct module (optional).
 
 ```ruby
+  
+  require "data-struct"
+
   linked_list = DataStruct::SinglyLinkedList.new
   # default LinkedList class is doubly linked; use SinglyLinkedList for singly linked list
   dynamic_array = DynamicArray.new(10)
