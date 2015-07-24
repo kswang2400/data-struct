@@ -2,4 +2,7 @@ source "https://rubygems.org"
 
 gem "rspec"
 gem "rspec-expectations"
-gem "byebug"
+
+group :test, :development do
+  gem "byebug"
+end
