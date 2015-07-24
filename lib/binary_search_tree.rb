@@ -25,31 +25,25 @@ class BinarySearchTree
     #      E   C        D   E
     #
 
-    new_left = BinarySearchTree.new(value)   # A'
+    new_left = BinarySearchTree.new(value)                        # A'
 
-    new_left.left = left            # A' -> D
-    left.parent = new_left          # D  <- A'
-    new_left.right = right.left     # A' -> E
-    right.left.parent = new_left    # E  <- A'
-    new_left.parent = self          # A' <- A
+    new_left.left, left.parent = left, new_left                   # A' <-> D
+    new_left.right, right.left.parent = right.left, new_left      # A' <-> E
+    new_left.parent = self                                        # A' <- A
 
-    new_right = right.right         # C
-    new_right.parent = self         # C <- A
-    
+    new_right, new_right.parent = right.right, self               # C <-> A
+
     @value, @left, @right = right.value, new_left, new_right
   end
 
   def right_rotate
     new_right = BinarySearchTree.new(value)
 
-    new_right.right = right
-    right.parent = new_right
-    new_right.left = left.right
-    left.right.parent = new_right
+    new_right.right, right.parent = right, new_right
+    new_right.left, left.right.parent = left.right, new_right
     new_right.parent = self
 
-    new_left = left.left
-    new_left.parent = self
+    new_left, new_left.parent = left.left, self
 
     @value, @left, @right = left.value, new_left, new_right
   end
