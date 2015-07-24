@@ -6,6 +6,7 @@ A simple gem that provides several useful data structures.
 [![Build Status](https://travis-ci.org/kswang2400/data-struct.svg?branch=master)](https://travis-ci.org/kswang2400/data-struct)
 [![Dependency Status](https://gemnasium.com/kswang2400/data-struct.svg)](https://gemnasium.com/kswang2400/data-struct)
 <a href="https://codeclimate.com/github/kswang2400/data-struct"><img src="https://codeclimate.com/github/kswang2400/data-struct/badges/gpa.svg" /></a>
+<a href="https://codeclimate.com/github/kswang2400/data-struct/coverage"><img src="https://codeclimate.com/github/kswang2400/data-struct/badges/coverage.svg" /></a>
 
 ##Usage
 
