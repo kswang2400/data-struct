@@ -25,6 +25,28 @@ RSpec.describe BinarySearchTree do
     end
   end
 
+  describe "#children" do 
+    it "should return 0 when there are no children" do
+      expect(@root.children).to eq 0
+    end
+
+    it "should return 1 when there is one children" do
+      @root.insert(1)
+      expect(@root.children).to eq 1
+    end
+
+    it "should return 1 even on the right" do 
+      @root.insert(20)
+      expect(@root.children).to eq 1
+    end
+
+    it "shouldr eturn 2 when there are two children" do 
+      @root.insert(0)
+      @root.insert(20)
+      expect(@root.children).to eq 2
+    end
+  end
+
   describe "#inspect" do
     it "should make it easier to read tree in terminal" do
       printed_tree = @root.inspect

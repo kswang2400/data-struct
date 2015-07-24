@@ -17,6 +17,14 @@ class BinarySearchTree
     end
   end
 
+  def children
+    count = 0
+    count += 1 if left.class == BinarySearchTree
+    count += 1 if right.class == BinarySearchTree
+
+    count
+  end
+
   def left_rotate
     #      A                B
     #     / \              / \
@@ -25,6 +33,8 @@ class BinarySearchTree
     #      E   C        D   E
     #
 
+    # KW: still need to refactor this, unnecessary creation of new node
+    # reassign parent
     new_left = BinarySearchTree.new(value)   # A'
 
     new_left.left = left            # A' -> D
