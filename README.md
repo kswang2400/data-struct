@@ -22,7 +22,7 @@ Or require in Gemfile:
   gem 'data-struct'
 ```
 
-then run 
+then run
 
 ```
   bundle install
@@ -31,7 +31,7 @@ then run
 To use the gem, initialize a new object through the DataStruct module (optional).
 
 ```ruby
-  
+
   require "data-struct"
 
   linked_list = DataStruct::SinglyLinkedList.new
@@ -42,13 +42,13 @@ To use the gem, initialize a new object through the DataStruct module (optional)
 
 Class names correspond with list below:
 
-Abstract Data Type          
-- [ ] Map                   
-- [ ] Set                   
-- [x] MaxStack              
-- [x] MinMaxStack           
-- [ ] Queue                 
-                            
+Abstract Data Type
+- [ ] Map
+- [ ] Set
+- [x] MaxStack
+- [x] MinMaxStack
+- [ ] Queue
+
 Data Structures
 - [x] DynamicArray
 - [ ] HashMap
@@ -62,6 +62,7 @@ Data Structures
 
 * [1. Abstract Data Type](#1-abstract-data-type)
   * [1.1 Max Stack](#11-max-stack)
+  * [1.2 Min Max Stack](#12-min-max-stack)
 * [2. Data Structures](#2-data-structures)
   * [2.1 Dynamic Array](#21-dynamic-array)
   * [2.2 Singly Linked List](#22-singly-linked-list)
@@ -119,6 +120,72 @@ Returns in the max value in O(1) time.
   => [[5, 5], [2, 5], [6, 6], [7, 7]]
   max_stack.max
   => 7
+```
+
+### 1.2 Min Max Stack
+
+#### #initialize
+
+Initialize your min max stack.
+
+```ruby
+mms = DataStruct::MinMaxStack.new
+=> #<DataStruct::MinMaxStack:0x007fd2a2f6d3b8 @store=[]>
+```
+
+#### #push(val)
+
+Pushes values into the stack.
+
+```ruby
+mms.push(2)
+=> [[2, 2, 2]]
+mms.push(5)
+=> [[2, 2, 2], [5, 2, 5]]
+mms.push(-1)
+=> [[2, 2, 2], [5, 2, 5], [-1, -1, 5]]
+```
+
+#### #length
+
+Returns the current length of the stack.
+
+```ruby
+mms.length
+=> 3
+```
+
+#### #max
+
+Returns the max value of the stack in O(1) time.
+
+```ruby
+mms.max
+=> 5
+```
+
+#### #min
+
+Similarly to max, returns min value of stack in O(1) time.
+
+```ruby
+mms.min
+=> -1
+```
+
+#### #pop
+
+Pops from the stack and returns the value.
+
+```ruby
+mms.pop
+=> -1
+mms.pop
+=> 5
+mms.pop
+=> 2
+mms.length
+=> 0
 ```
 
 ## 2. Data Structures
@@ -244,9 +311,9 @@ Pushes onto the end
       <SinglyLink:0x007fbe926c7c50 @next=#
         <SinglyLink:0x007fbe9262fa90 @next=#
           <SinglyLink:0x007fbe925c68d8 @next=#
-            <SinglyLink:0x007fbe91c57540 @next=nil, 
-            @val=3>, 
-          @val=2>, 
+            <SinglyLink:0x007fbe91c57540 @next=nil,
+            @val=3>,
+          @val=2>,
         @val=1>,
      @val=nil>>
 ```
@@ -291,8 +358,8 @@ Unshifts into the front of the list
       <SinglyLink:0x007fbe9256e5c0 @next=#
         <SinglyLink:0x007fbe924594a0 @next=#
           <SinglyLink:0x007fbe924ba868 @next=#
-            <SinglyLink:0x007fbe924ff5d0 @next=nil, 
-            @val=10>, 
+            <SinglyLink:0x007fbe924ff5d0 @next=nil,
+            @val=10>,
           @val=20>,
         @val=30>,
      @val=nil>>
@@ -336,8 +403,8 @@ Pushes onto the end of the list (inner most nested pointer)
       #<SinglyLink:0x007fd349bc21f8 @next=
         #<SinglyLink:0x007fd349087b30 @next=
           #<SinglyLink:0x007fd3490b2ce0 @next=
-            #<SinglyLink:0x007fd3490cbdf8 @next=nil, 
-            @val=3>, 
+            #<SinglyLink:0x007fd3490cbdf8 @next=nil,
+            @val=3>,
           @val=2>,
         @val=1>,
       @val=nil>>
@@ -370,22 +437,22 @@ unshifts to the front of the list and is attached to the sentinel (outer most po
       #<SinglyLink:0x007fd34a551b10 @next=
         #<SinglyLink:0x007fd349bdab18 @next=
           #<SinglyLink:0x007fd34910da28 @next=
-            #<SinglyLink:0x007fd348a0e880 @next=nil, 
-            @val=10>, 
-          @val=20>, 
+            #<SinglyLink:0x007fd348a0e880 @next=nil,
+            @val=10>,
+          @val=20>,
         @val=30>,
       @val=nil>>
 ```
 
 ### 2.3 Binary Search Tree (self balancing)
 
-#### #initialize 
+#### #initialize
 
 initialize with your root node
 
 ```ruby
   tree = BinarySearchTree.new(10)
-  =>  { 10 : {} | {} } 
+  =>  { 10 : {} | {} }
 ```
 
 #### #children
@@ -401,7 +468,7 @@ class method to initialize tree from an array
   =>  { 6 :  
         { 2 :  
           { 1 : {} | {} }  |  { 5 :  
-                        { 3 : {} | {} }  | {} 
+                        { 3 : {} | {} }  | {}
                                 }  
         }  |  
         { 8 : {} |  
@@ -417,9 +484,9 @@ inserts the value in the correct position, then rebalances
 ```ruby
   tree = BinarySearchTree.new(10)
   tree.insert(15)
-  =>  { 10 : {} |  { 15 : {} | {} }  } 
+  =>  { 10 : {} |  { 15 : {} | {} }  }
   tree.insert(13)
-  =>  { 13 :  { 10 : {} | {} }  |  { 15 : {} | {} }  } 
+  =>  { 13 :  { 10 : {} | {} }  |  { 15 : {} | {} }  }
 ```
 
 #### #include?(val)
@@ -458,7 +525,7 @@ returns the tree in sorted array form
 
   Benchmark.bm do |benchmark|
     benchmark.report("test_array include" ) { (1..5000).each { |n| test_array.include? n } }
-    benchmark.report("binary tree serach")  { (1..5000).each { |n| tree.include? n } } 
+    benchmark.report("binary tree serach")  { (1..5000).each { |n| tree.include? n } }
     benchmark.report("test_hash lookup ")   { (1..5000).each { |n| test_hash.has_key? n }}
   end
 
@@ -499,7 +566,7 @@ Insert a element into the heap, which will be placed in the correct position via
   bin_heap.insert(5)
   bin_heap.insert(2)
 
-  bin_heap.store 
+  bin_heap.store
   => [0, 3, 2, 4, 5, 6]
 ```
 
@@ -517,28 +584,28 @@ Removes the element with the highest priority and re-organizes the binary heap a
 
 #### ::heapify_up(store, child_idx, &prc)
 
-1. Starts with the last element, store[child_idx], and compares it to its parent to see if priority holds. 
-2. If it does, the binary heap is ordered properly. 
-3. If it does not, swap the child and parent elements, and call ::heapify_up recursively until the binary heap is ordered. 
+1. Starts with the last element, store[child_idx], and compares it to its parent to see if priority holds.
+2. If it does, the binary heap is ordered properly.
+3. If it does not, swap the child and parent elements, and call ::heapify_up recursively until the binary heap is ordered.
 
 #### ::heapify_down(store, parent_idx, &prc)
 
 1. Starts with the first element and compares it to its children to see if priority holds
-2. If it does, the binary heap is ordered properly 
-3. If it does not, swap with the child of higher priority if applicable and call ::heapify_down recursively until the heap is ordered. 
+2. If it does, the binary heap is ordered properly
+3. If it does not, swap with the child of higher priority if applicable and call ::heapify_down recursively until the heap is ordered.
 
 #### ::find_children(last_idx, parent_idx)
 
-Due to the nature of a binary heap being a full tree, we can find children indices using a parent_idx by using some arithmetic: 
+Due to the nature of a binary heap being a full tree, we can find children indices using a parent_idx by using some arithmetic:
 
 ```ruby
   left_child_idx = (parent_idx * 2) + 1
   right_child_idx = (parent_idx * 2) + 2
-``` 
+```
 
 #### ::find_parent(child_idx)
 
-Similary to ::find_children, we can find a child's parent by solving for parent_idx. 
+Similary to ::find_children, we can find a child's parent by solving for parent_idx.
 
 ```ruby
   parent_idx = (child_idx - 1) / 2
