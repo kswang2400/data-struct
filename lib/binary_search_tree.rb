@@ -24,7 +24,7 @@ class BinarySearchTree
     #       / \          / \
     #      E   C        D   E
     #
-    
+
     new_left = BinarySearchTree.new(value)   # A'
 
     new_left.left = left            # A' -> D
@@ -56,8 +56,8 @@ class BinarySearchTree
 
   def insert(val)
     case val <=> value
-    when -1 then insert_left(val)
-    when 1 then insert_right(val)
+    when -1 then insert_at(val, left, -1)
+    when 1 then insert_at(val, right, 1)
     when 0 then false
     end
 
@@ -96,37 +96,29 @@ class BinarySearchTree
 
   private
 
-  def insert_left(val)
-    if (left.class != EmptyNode)
-      left.insert(val)
+  def insert_at(val, node, dir)
+    # dir: -1 => left, 1 => right
+    if (node.class != EmptyNode)
+      node.insert(val)
     else
       new_node = BinarySearchTree.new(val)
-      self.left, new_node.parent = new_node, self
-      new_node.update_depth_and_balance
-    end
-  end
-
-  def insert_right(val)
-    if (right.class != EmptyNode)
-      right.insert(val)
-    else
-      new_node = BinarySearchTree.new(val)
-      self.right, new_node.parent = new_node, self
+      (dir == 1) ? self.right = new_node : self.left = new_node
+      new_node.parent = self
       new_node.update_depth_and_balance
     end
   end
 
   def rebalance
-    if @balance == -2
+    case @balance
+    when -2
       left.left_rotate if left.balance == 1
       right_rotate
-    elsif @balance == 2
+    when 2
       right.right_rotate if right.balance == -1
       left_rotate
     end
-    right.recalculate_depth_and_balance
-    left.recalculate_depth_and_balance
-    recalculate_depth_and_balance
+
+    [right, left, self].each { |n| n.recalculate_depth_and_balance }
   end
 end
 
