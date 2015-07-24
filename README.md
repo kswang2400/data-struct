@@ -63,10 +63,12 @@ Data Structures
   * [2.1 Dynamic Array](#21-dynamic-array)
   * [2.2 Singly Linked List](#22-singly-linked-list)
   * [2.3 Binary Search Tree](#23-binary-search-tree-self-balancing)
-  * [2.4 Binary Heap](#24-bin-heap)
+  * [2.4 Binary Heap](#24-binary-heap)
 * [Contact](#contact)
 * [Contributing](#contributing)
 * [License](#license)
+
+## 1. Abstract Data Types
 
 ### 1.1 Max Stack
 
@@ -115,6 +117,8 @@ Returns in the max value in O(1) time.
   max_stack.max
   => 7
 ```
+
+## 2. Data Structures
 
 ### 2.1 Dynamic Array
 
