@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'rspec'
-gem 'rspec-expectations'
-gem 'byebug'
+gem "rspec"
+gem "rspec-expectations"
+gem "byebug"

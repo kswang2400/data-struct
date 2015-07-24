@@ -3,7 +3,7 @@
 A simple gem that provides several useful data structures.
 
 [![Gem Version](https://badge.fury.io/rb/data-struct.svg)](http://badge.fury.io/rb/data-struct)
-<a href="https://codeclimate.com/github/kswang2400/data-struct"><img src="https://codeclimate.com/github/kswang2400/data-struct/badges/gpa.svg" /></a>
+[![Dependency Status](https://gemnasium.com/kswang2400/data-struct.svg)](https://gemnasium.com/kswang2400/data-struct)
 <a href="https://codeclimate.com/github/kswang2400/data-struct"><img src="https://codeclimate.com/github/kswang2400/data-struct/badges/gpa.svg" /></a>
 
 ##Usage
