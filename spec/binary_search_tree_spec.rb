@@ -2,6 +2,11 @@ require "binary_search_tree"
 
 RSpec.describe BinarySearchTree do
   before :each do
+<<<<<<< HEAD
+    @bst = BinarySearchTree.new
+  end
+end
+=======
     @root = BinarySearchTree.new(10)
   end
 
@@ -138,3 +143,4 @@ end
 
 
 
+>>>>>>> upstream/master
