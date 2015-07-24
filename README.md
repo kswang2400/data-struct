@@ -421,7 +421,7 @@ returns the tree in sorted array form
   80x faster than Ruby array, 10x slower than Ruby hash
 ```
 
-### 1.4 Binary Heap
+### 2.4 Binary Heap
 
 #### #initialize(&prc)
 
