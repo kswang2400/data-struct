@@ -144,16 +144,8 @@ class EmptyNode
     false
   end
 
-  def insert(*)
-    false
-  end
-
   def inspect
     "{}"
-  end
-
-  def recalculate_depth_and_balance
-    true
   end
 
   def to_a
