@@ -1,6 +1,6 @@
 # Data Structures
 
-A simple gem that provides several useful data structures including the following:
+A simple gem that provides several useful data structures.
 
 ##Usage
 
@@ -33,16 +33,22 @@ To use the gem, initialize a new object through the DataStruct module (optional)
 
 Class names correspond with list below.
 
-Abstract Data Type          Data Structures
-- [ ] Map                   - [x] DynamicArray
-- [ ] Set                   - [ ] HashMap
-- [x] MaxStack              - [x] SinglyLinkedList
-- [x] MinMaxStack           - [ ] LinkedList
-- [ ] Queue                 - [ ] LRUCache
-                            - [ ] HashMap
-                            - [x] BinarySearchTree
-                            - [x] BinHeap
-
+Abstract Data Type          
+- [ ] Map                   
+- [ ] Set                   
+- [x] MaxStack              
+- [x] MinMaxStack           
+- [ ] Queue                 
+                            
+Data Structures
+- [x] DynamicArray
+- [ ] HashMap
+- [x] SinglyLinkedList
+- [ ] LinkedList
+- [ ] LRUCache
+- [ ] HashMap
+- [x] BinarySearchTree
+- [x] BinHeap
 
 ## Contents
 
