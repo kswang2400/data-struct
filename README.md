@@ -55,7 +55,6 @@ Data Structures
 - [x] SinglyLinkedList
 - [ ] LinkedList
 - [ ] LRUCache
-- [ ] HashMap
 - [x] BinarySearchTree
 - [x] BinHeap
 
