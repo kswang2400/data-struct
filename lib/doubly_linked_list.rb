@@ -13,7 +13,6 @@ class LinkedList
 
     last_link.prev.next = @last_sentinel
     @last_sentinel.prev = last_link.prev
-    last_link.prev, last_link.next = nil, nil
 
     last_link.val
   end
@@ -50,7 +49,6 @@ class LinkedList
 
     @begin_sentinel.next = first_link.next
     first_link.next.prev = @begin_sentinel
-    first_link.next, first_link.prev = nil, nil
 
     first_link.val
   end
