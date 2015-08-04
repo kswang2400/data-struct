@@ -9,10 +9,13 @@ class LinkedList
 
   def pop
     last_link = @last_sentinel.prev
-    val = last_link.val
-    @last_sentinel.prev = last_link.prev
+    return nil if last_link == @begin_sentinel
 
-    val
+    last_link.prev.next = @last_sentinel
+    @last_sentinel.prev = last_link.prev
+    last_link.prev, last_link.next = nil, nil
+
+    last_link.val
   end
 
   def push(val)
@@ -23,7 +26,7 @@ class LinkedList
     else
       @begin_sentinel.next = link
     end
-      @last_sentinel.prev = link
+    @last_sentinel.prev = link
 
     self
   end
@@ -44,7 +47,10 @@ class LinkedList
   def shift
     first_link = @begin_sentinel.next
     return nil if first_link.nil?
+
     @begin_sentinel.next = first_link.next
+    first_link.next.prev = @begin_sentinel
+    first_link.next, first_link.prev = nil, nil
 
     first_link.val
   end
