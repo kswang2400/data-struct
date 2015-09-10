@@ -47,7 +47,7 @@ Abstract Data Type
 - [ ] Set
 - [x] MaxStack
 - [x] MinMaxStack
-- [ ] Queue
+- [ ] Priority Queue
 
 Data Structures
 - [x] DynamicArray

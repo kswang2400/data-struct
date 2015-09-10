@@ -1,4 +1,4 @@
-require 'rspec'
+
 require 'bin_heap'
 
 describe "Heap" do 

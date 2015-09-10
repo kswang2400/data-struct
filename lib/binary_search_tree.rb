@@ -77,14 +77,12 @@ class BinarySearchTree
   def recalculate_depth_and_balance
     @depth = ([left.depth, right.depth].max + 1)
     @balance = right.depth - left.depth
-    # p "RECALULATED DEPTH = #{depth}: BALANCE = #{balance}"
   end
 
   def update_depth_and_balance
     # recursively update depth and balance, rebalances if needed and crawls up the tree
     recalculate_depth_and_balance
     rebalance if ([-2, 2].include?(@balance))
-    # p "RECALULATED #{self.inspect} DEPTH = #{depth}: BALANCE = #{balance}"
     parent.update_depth_and_balance
   end
 

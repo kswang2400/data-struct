@@ -1,3 +1,4 @@
+
 require "binary_search_tree"
 
 RSpec.describe BinarySearchTree do
@@ -29,7 +30,6 @@ RSpec.describe BinarySearchTree do
     it "should left rotate" do 
       @root.insert(15)
       @root.left_rotate
-      p @root
     end
   end
 
